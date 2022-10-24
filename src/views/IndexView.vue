@@ -1,28 +1,21 @@
 <template>
   <v-loading :active="isLoading" ></v-loading>
   <SweetAlert></SweetAlert>
-  <div id="carouselCaptions" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-      <div v-for="(item, index) in bn" :key="`bn${index}`" class="carousel-item" :class="{'active': index === 1}"
+  <swiper :pagination="{clickable: true}" :modules="modules" :autoplay="{
+      delay: 3500,
+      disableOnInteraction: false,
+    }" class="mySwiper">
+    <swiper-slide v-for="(item, index) in bn" :key="index"
         :style="{backgroundImage: `url(${item.img})`}">
-        <div class="container h-100 d-flex align-items-center">
-          <div class="carousel-text p-4 m-sm-0 m-5">
-            <span class="mb-4 px-3 pt-2 pb-1 lh-1 d-inline-block bg-white rounded-pill">{{ item.prod }}</span>
-            <h2 class="mb-4 fs-1" style="line-height: 1.5;">複雜的事我們處理好了，<span class="d-sm-block d-inline">簡單的事交給你</span></h2>
-            <p>線上交付檔案 ⨉ 專人校稿 ⨉ 少量印製 ⨉ 宅配到府</p>
-          </div>
+      <div class="container h-100 d-flex align-items-center">
+        <div class="bn-text p-4 m-sm-0 m-4">
+          <span class="mb-4 px-3 pt-2 pb-1 lh-1 d-inline-block bg-white rounded-pill">{{ item.prod }}</span>
+          <h2 class="mb-4 fs-1" style="line-height: 1.5;">複雜的事我們處理好了，<span class="d-sm-block d-inline">簡單的事交給你</span></h2>
+          <p>線上交付檔案 ⨉ 專人校稿 ⨉ 少量印製 ⨉ 宅配到府</p>
         </div>
       </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselCaptions" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselCaptions" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
+    </swiper-slide>
+  </swiper>
   <div class="main">
     <!-- <img alt="Vue logo" src="../assets/logo.png" /> -->
     <section>
@@ -301,62 +294,17 @@
     </section>
   </div>
 </template>
-
-<style lang="scss">
-.carousel-item {
-  height: 500px;
-  background-size: cover;
-  background-position: right center;
-  background-repeat: no-repeat;
-  @include media-breakpoint-down(sm) {
-    height: auto;
-    background-position: right 40% center;
-  }
-}
-.carousel-text {
-  @include media-breakpoint-down(lg) {
-    background-color: rgba(#fff, .65);
-  }
-}
-.cover-fit {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.color-list {
-  width: 32px;
-  @include media-breakpoint-down(lg){
-    width: 100%;
-    height: 38px;
-  }
-}
-.color-item {
-  display: inline-block;
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  transition: width .25s, height .25s;
-  &:hover {
-    opacity: .8;
-  }
-  &.active {
-    width: 30px;
-    height: 30px;
-    border-color: #E5EBFD !important;
-  }
-}
-.bg-mode {
-  @include media-breakpoint-up(lg) {
-    background:
-      linear-gradient(100deg, #F0F3FA 55%, rgba(240, 243, 250, 0.1) 90%, rgba(240, 243, 250, 0.3) 100%), url("https://images.unsplash.com/photo-1561015314-6bd8c1e875ee?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1530&q=80") right 0% bottom 30%/auto 170% no-repeat, #F0F3FA;
-  }
-  background: #F0F3FA;
-}
-</style>
 <script>
 import 'bootstrap/js/dist/carousel.js'
 import emitter from '@/js/emitter'
 import SweetAlert from '@/components/SweetAlert.vue'
+// swiper
+
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import 'swiper/css'
+import 'swiper/css/pagination'
+import { Pagination, Autoplay } from 'swiper'
+
 import bannerImage1 from '@/assets/images/banner01.jpg'
 import bannerImage2 from '@/assets/images/banner02.jpg'
 import bannerImage3 from '@/assets/images/banner03.jpg'
@@ -427,7 +375,12 @@ export default {
 
   },
   components: {
-    SweetAlert
+    SweetAlert, Swiper, SwiperSlide
+  },
+  setup () {
+    return {
+      modules: [Pagination, Autoplay]
+    }
   },
   methods: {
     createCanvas (side) {
@@ -633,3 +586,66 @@ export default {
   }
 }
 </script>
+<style lang="scss">
+.cover-fit {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.color-list {
+  width: 32px;
+  @include media-breakpoint-down(lg){
+    width: 100%;
+    height: 38px;
+  }
+}
+.color-item {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  transition: width .25s, height .25s;
+  &:hover {
+    opacity: .8;
+  }
+  &.active {
+    width: 30px;
+    height: 30px;
+    border-color: #E5EBFD !important;
+  }
+}
+.bg-mode {
+  @include media-breakpoint-up(lg) {
+    background:
+      linear-gradient(100deg, #F0F3FA 55%, rgba(240, 243, 250, 0.1) 90%, rgba(240, 243, 250, 0.3) 100%), url("https://images.unsplash.com/photo-1561015314-6bd8c1e875ee?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1530&q=80") right 0% bottom 30%/auto 170% no-repeat, #F0F3FA;
+  }
+  background: #F0F3FA;
+}
+.swiper {
+  width: 100%;
+  height: 100%;
+  --swiper-pagination-color: #fff;
+}
+
+.swiper-slide {
+  padding: 8rem 0;
+  background-size: cover;
+  background-position: right center;
+  background-repeat: no-repeat;
+  @include media-breakpoint-down(sm) {
+    padding: 2.5rem 0;
+    background-position: right 40% center;
+  }
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bn-text {
+  @include media-breakpoint-down(lg) {
+    background-color: rgba(#fff, .65);
+  }
+}
+
+</style>

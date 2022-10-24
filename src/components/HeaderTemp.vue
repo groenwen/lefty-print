@@ -54,7 +54,7 @@ export default {
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav ms-auto">
-            <router-link to="/about" class="nav-link" :class="{'active':this.$route.path === '/about'}">關於 Print</router-link>
+            <!-- <router-link to="/about" class="nav-link" :class="{'active':this.$route.path === '/about'}">關於 Print</router-link> -->
             <router-link to="/products" class="nav-link" :class="{'active':this.$route.path === '/products'}">所有產品</router-link>
             <router-link to="/days" class="nav-link" :class="{'active':this.$route.path === '/days'}"><span class="material-symbols-sharp me-1 align-middle">calendar_month</span>印刷工作天</router-link>
             <router-link to="/carts" class="nav-link position-relative pe-1" :class="{'active':this.$route.path === '/carts'}">
