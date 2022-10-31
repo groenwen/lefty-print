@@ -1,21 +1,11 @@
 <template>
   <v-loading :active="isLoading" ></v-loading>
   <SweetAlert></SweetAlert>
+  <HeadTitle dialog="Products" dark-text="所有產品"></HeadTitle>
   <div class="container mt-5">
-    <div class="d-flex justify-content-between align-items-center mb-5 border-bottom">
-      <h1 class=" fs-3 text-dark">
-        <img src="@/assets/images/people01.svg" class="me-3" height="55" alt="">
-        <span class="align-middle">所有產品</span>
-      </h1>
-      <div>
-        <span class="me-3 text-primary small">FREE SHIPPING</span>
-        <span class="material-symbols-sharp text-primary fs-1 align-middle me-3">local_shipping</span>
-      </div>
-    </div>
-
     <div class="row g-4">
       <div class="col-12 col-md-6 col-xl-4" v-for="item in pords" :key="item.id">
-        <div class="card bg-light p-4 mb-4">
+        <div class="card bg-gray100 p-4 mb-4">
           <div class="card-img bg-cover" :style="{backgroundImage: `url(${item.imageUrl})`}">
             <img src="@/assets/images/card_img.png" alt="">
           </div>
@@ -33,6 +23,7 @@
 </template>
 <script>
 import emitter from '@/js/emitter'
+import HeadTitle from '@/components/HeadTitle.vue'
 import SweetAlert from '@/components/SweetAlert.vue'
 export default {
   data () {
@@ -44,7 +35,7 @@ export default {
     }
   },
   components: {
-    SweetAlert
+    SweetAlert, HeadTitle
   },
   methods: {
     getProds () {

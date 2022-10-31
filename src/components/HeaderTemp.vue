@@ -56,6 +56,8 @@ export default {
           <div class="navbar-nav ms-auto">
             <!-- <router-link to="/about" class="nav-link" :class="{'active':this.$route.path === '/about'}">關於 Print</router-link> -->
             <router-link to="/products" class="nav-link" :class="{'active':this.$route.path === '/products'}">所有產品</router-link>
+            <router-link to="/make" class="nav-link" :class="{'active':this.$route.path === '/make'}">名片快速製作</router-link>
+            <router-link to="/quote" class="nav-link" :class="{'active':this.$route.path === '/quote'}">特殊尺寸詢價</router-link>
             <router-link to="/days" class="nav-link" :class="{'active':this.$route.path === '/days'}"><span class="material-symbols-sharp me-1 align-middle">calendar_month</span>印刷工作天</router-link>
             <router-link to="/carts" class="nav-link position-relative pe-1" :class="{'active':this.$route.path === '/carts'}">
               <span class="material-symbols-sharp">shopping_cart</span>
@@ -77,5 +79,9 @@ export default {
     width: fit-content;
     margin-top: 1rem;
   }
+}
+.navbar-nav .show > .nav-link, .navbar-nav .nav-link.active {
+  color: $dark !important;
+  border-bottom: 2px solid $primary;
 }
 </style>

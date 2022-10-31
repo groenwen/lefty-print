@@ -18,6 +18,14 @@ const router = createRouter({
           component: () => import('../views/AboutView.vue')
         },
         {
+          path: '/make',
+          component: () => import('../views/MakeView.vue')
+        },
+        {
+          path: '/quote',
+          component: () => import('../views/QuoteView.vue')
+        },
+        {
           path: 'days',
           component: () => import('../views/DaysView.vue')
         },

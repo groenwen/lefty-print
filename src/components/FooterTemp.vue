@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-7 bg-gray-200 p-sm-5 px-4 py-5">
+  <div class="mt-7 bg-gray100 p-sm-5 px-4 py-5">
     <div class="container">
       <div class="d-flex flex-lg-row flex-column justify-content-between">
         <div class="d-flex flex-md-row flex-column justify-content-md-center align-items-md-center align-items-start">

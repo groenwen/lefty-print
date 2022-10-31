@@ -44,19 +44,9 @@ section {
   background-size: cover;
 }
 
-.btn-primary, .btn-primary:hover, .btn-primary.disabled {
-  color: #fff;
-}
 
-.dialog::before {
-  position: absolute;
-  content: '';
-  left: 50%;
-  top: 100%;
-  width: 0;
-  height: 0;
-  border: 10px solid;
-  border-color: $primary transparent transparent transparent;
+.btn-primary, .btn-primary:hover, .btn-primary.disabled, .btn-accent, .btn-accent:hover, .btn-accent.disabled {
+  color: #fff;
 }
 
 .card-img {

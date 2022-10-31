@@ -304,8 +304,9 @@ $success:       $green !default;
 $info:          $cyan !default;
 $warning:       $yellow !default;
 $danger:        $red !default;
-$light:         $gray-100; //#F0F3FA; //$gray-100 !default;
+$light:         #E5EBFD; //$gray-100 !default;
 $dark:          #484A4C; //$gray-900 !default;
+$accent:        #EC6A66;
 // scss-docs-end theme-color-variables
 
 // scss-docs-start theme-colors-map
@@ -319,8 +320,9 @@ $theme-colors: (
   "light":      $light,
   "dark":       $dark,
   // 新增
-  "gray-100":   $gray-100,
-  "gray-200":   $gray-200
+  "gray100":   $gray-100,
+  "gray200":   $gray-200,
+  "accent":     $accent
 ) !default;
 // scss-docs-end theme-colors-map
 
@@ -381,8 +383,8 @@ $spacers: (
   2: $spacer * .5,
   3: $spacer,
   4: $spacer * 1.5,
-  5: $spacer * 3,
-  6: $spacer * 4,
+  5: $spacer * 2,
+  6: $spacer * 3.5,
   7: $spacer * 5,
 ) !default;
 // scss-docs-end spacer-variables-maps
@@ -723,11 +725,11 @@ $table-variants: (
 // Shared variables that are reassigned to `$input-` and `$btn-` specific variables.
 
 // scss-docs-start input-btn-variables
-$input-btn-padding-y:         0.625rem; // .375rem !default;
-$input-btn-padding-x:         1rem; // .75rem !default;
+$input-btn-padding-y:         0.75rem; // .375rem !default;
+$input-btn-padding-x:         0.75rem; // .75rem !default;
 $input-btn-font-family:       'Noto Sans TC', sans-serif; //null !default;
 $input-btn-font-size:         $font-size-base !default;
-$input-btn-line-height:       $line-height-base !default;
+$input-btn-line-height:       1; //$line-height-base !default;
 
 $input-btn-focus-width:         .25rem !default;
 $input-btn-focus-color-opacity: .25 !default;
@@ -735,8 +737,8 @@ $input-btn-focus-color:         rgba($component-active-bg, $input-btn-focus-colo
 $input-btn-focus-blur:          0 !default;
 $input-btn-focus-box-shadow:    0 0 $input-btn-focus-blur $input-btn-focus-width $input-btn-focus-color !default;
 
-$input-btn-padding-y-sm:      0.4rem; // .25rem !default;
-$input-btn-padding-x-sm:      .5rem !default;
+$input-btn-padding-y-sm:      0.475rem; // .25rem !default;
+$input-btn-padding-x-sm:      1.5rem; //.5rem !default;
 $input-btn-font-size-sm:      $font-size-sm !default;
 
 $input-btn-padding-y-lg:      .5rem !default;
@@ -753,14 +755,14 @@ $input-btn-border-width:      $border-width !default;
 
 // scss-docs-start btn-variables
 $btn-padding-y:               $input-btn-padding-y !default;
-$btn-padding-x:               1.75rem; // $input-btn-padding-x !default;
+$btn-padding-x:               2rem; // $input-btn-padding-x !default;
 $btn-font-family:             $input-btn-font-family !default;
 $btn-font-size:               $input-btn-font-size !default;
-$btn-line-height:             1.5; //$input-btn-line-height !default;
+$btn-line-height:             $input-btn-line-height !default;
 $btn-white-space:             null !default; // Set to `nowrap` to prevent text wrapping
 
 $btn-padding-y-sm:            $input-btn-padding-y-sm !default;
-$btn-padding-x-sm:            1.25rem; // $input-btn-padding-x-sm !default;
+$btn-padding-x-sm:            $input-btn-padding-x-sm !default;
 $btn-font-size-sm:            $input-btn-font-size-sm !default;
 
 $btn-padding-y-lg:            $input-btn-padding-y-lg !default;
@@ -781,9 +783,9 @@ $btn-link-hover-color:        var(--#{$prefix}link-hover-color) !default;
 $btn-link-disabled-color:     $gray-600 !default;
 
 // Allows for customizing button radius independently from global border radius
-$btn-border-radius:           2rem; //$border-radius !default;
-$btn-border-radius-sm:        2rem; //$border-radius-sm !default;
-$btn-border-radius-lg:        2rem; //$border-radius-lg !default;
+$btn-border-radius:           .5rem; //$border-radius !default;
+$btn-border-radius-sm:        .5rem; //$border-radius-sm !default;
+$btn-border-radius-lg:        .5rem; //$border-radius-lg !default;
 
 $btn-transition:              color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
 
