@@ -17,34 +17,34 @@
     </swiper-slide>
   </swiper>
   <div class="main">
-    <div class="bg-light py-5">
+    <div class="bg-gray100 py-5">
       <div class="container d-flex flex-md-row flex-column justify-content-center align-items-center">
         <div class="d-flex align-items-center mb-md-0 mb-4">
           <div class="d-flex flex-column flex-lg-row align-items-center">
-            <span class="material-symbols-outlined fs-2 me-3 p-3 bg-white rounded-circle">backup</span>
+            <span class="material-symbols-outlined me-3 fs-2 p-3 text-primary bg-white rounded-circle">backup</span>
             <span>上傳檔案</span>
           </div>
-          <span class="material-symbols-sharp text-secondary mx-2 mx-lg-4">
-            arrow_right
+          <span class="material-symbols-sharp text-secondary mx-2 mx-lg-5">
+            chevron_right
           </span>
           <div class="d-flex flex-column flex-lg-row align-items-center">
-            <span class="material-symbols-outlined fs-2 me-3 p-3 bg-white rounded-circle">style</span>
+            <span class="material-symbols-outlined me-3 fs-2  p-3 text-primary bg-white rounded-circle">style</span>
             <span>選擇材質數量</span>
           </div>
-          <span class="material-symbols-sharp text-secondary mx-2 mx-lg-4">
-            arrow_right
+          <span class="material-symbols-sharp text-secondary mx-2 mx-lg-5">
+            chevron_right
           </span>
         </div>
         <div class="d-flex align-items-center">
           <div class="d-flex flex-column flex-lg-row align-items-center">
-            <span class="material-symbols-outlined fs-2 me-3 p-3 bg-white rounded-circle">shopping_cart</span>
+            <span class="material-symbols-outlined me-3 fs-2  p-3 text-primary bg-white rounded-circle">shopping_cart</span>
             <span>加入購物車</span>
           </div>
-          <span class="material-symbols-sharp text-secondary mx-2 mx-lg-4">
-            arrow_right
+          <span class="material-symbols-sharp text-secondary mx-2 mx-lg-5">
+            chevron_right
           </span>
           <div class="d-flex flex-column flex-lg-row align-items-center">
-            <span class="material-symbols-outlined fs-2 me-3 p-3 bg-white rounded-circle">local_shipping</span>
+            <span class="material-symbols-outlined me-3 fs-2 p-3 text-primary bg-white rounded-circle">local_shipping</span>
             <span>宅配到府</span>
           </div>
         </div>
@@ -52,16 +52,99 @@
     </div>
     <section>
       <div class="container">
-        <div class="d-flex align-items-end mb-5">
-          <img class="me-3" src="@/assets/images/people02.svg" height="80" alt="">
-          <div>
-            <span class="d-inline-block mb-2 px-3 py-2 text-white lh-1 bg-primary rounded-pill position-relative">Business</span>
-            <h2 class="mb-0 fw-bolder">專業形象</h2>
+        <div class="row gy-5 gy-sm-0">
+          <div class="col-sm">
+            <div class="text-center">
+              <img class="mb-4" src="@/assets/images/feature01.svg">
+              <h4 class="mb-4">線上交付檔案</h4>
+              <p>線上上傳檔案，直接下單</p>
+            </div>
+          </div>
+          <div class="col-sm">
+            <div class="text-center">
+              <img class="mb-4" src="@/assets/images/feature02.svg">
+              <h4 class="mb-4">專人校稿</h4>
+              <p>專人為您校稿，提醒印刷注意事項</p>
+            </div>
+          </div>
+          <div class="col-sm">
+            <div class="text-center">
+              <img class="mb-4" src="@/assets/images/feature03.svg">
+              <h4 class="mb-4">少量印製</h4>
+              <p>少量也能印，印多少算多少</p>
+            </div>
+          </div>
+      </div>
+      </div>
+    </section>
+    <section class="bg-new">
+      <div class="container">
+        <div class="row">
+          <div class="col-5">
+            <span class="mb-5 d-inline-block px-4 py-1 text-white bg-primary rounded-pill position-relative dialog">New</span>
+            <h2 class="mb-5 d-flex align-items-end"><img class="me-3" src="@/assets/images/people01.svg" height="72" alt=""><span class="text-primary">名片</span>快速製作</h2>
+            <p class="mb-5">新功能試用立即體驗，未來將提供更多產品及更完善的線上編輯器，沒有專業繪圖軟體也能製作印刷品。</p>
+            <a href="" class="btn btn-accent">立即體驗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="mx-3 h-100 d-flex flex-column border rounded-4 border-light px-5 py-4">
+              <div class="mb-3">
+                <span class="material-symbols-outlined text-primary fs-1">request_quote</span>
+              </div>
+              <h5 class="mb-3">特殊尺寸報價</h5>
+              <p class="flex-fill mb-3 text-secondary">找不到需要的尺寸？請至此頁面計算所需模數後，將由專人為您報價。</p>
+              <div class="text-end">
+                <span class="material-symbols-outlined text-primary fs-3">keyboard_double_arrow_right</span>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="mx-3 h-100 d-flex flex-column border rounded-4 border-light px-5 py-4">
+              <div class="mb-3">
+                <span class="material-symbols-sharp text-primary fs-1">calendar_month</span>
+              </div>
+              <h5 class="mb-3">印刷工作天數</h5>
+              <p class="flex-fill mb-3 text-secondary">查詢要印製的產品工作天數，了解大概的出貨時間。</p>
+              <div class="text-end">
+                <span class="material-symbols-outlined text-primary fs-3">keyboard_double_arrow_right</span>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="mx-3 h-100 d-flex flex-column border rounded-4 border-light px-5 py-4">
+              <div class="mb-3">
+                <span class="material-symbols-sharp text-primary fs-1">emoji_objects</span>
+              </div>
+              <h5 class="mb-3">印刷小知識</h5>
+              <p class="flex-fill mb-3 text-secondary">印刷的眉眉角角報你知，減少被退件機會。</p>
+              <div class="text-end">
+                <span class="material-symbols-outlined text-primary fs-3">keyboard_double_arrow_right</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <div class="mb-5">
+          <span class="mb-5 d-inline-block px-4 py-1 text-white bg-primary rounded-pill position-relative dialog">Business</span>
+          <h2 class="mb-5 d-flex align-items-end"><img class="me-3" src="@/assets/images/people02.svg" height="72" alt="">專業形象</h2>
+        </div>
+        <div class="row">
+          <div class="col-4">
+            <ProdItem prodId="-NCOZyXvGY3qcVjBB7EF" prod="西式信封" desc="婚禮信封、日常小卡裝載，用途多種發揮你的創意吧！" bgImg="https://images.unsplash.com/photo-1567473030492-533b30c5494c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1760&q=80"></ProdItem>
           </div>
         </div>
         <div class="row g-4">
           <div class="col-12 col-md-6 col-xl-4">
-            <div class="card bg-gray-100 p-4 shadow-sm">
+            <div class="card bg-gray100 p-4 shadow-sm">
               <div class="card-img bg-cover" style="background-image: url('https://images.unsplash.com/photo-1561015314-6bd8c1e875ee?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1830&q=80');">
                 <img src="@/assets/images/card_img.png" alt="">
               </div>
@@ -143,12 +226,9 @@
     </section>
     <section>
       <div class="container">
-        <div class="d-flex align-items-end mb-5">
-          <img class="me-3" src="@/assets/images/people03.svg" height="80" alt="">
-          <div>
-            <p class="d-inline-block mb-2 px-3 py-2 text-white lh-1 bg-primary rounded-pill position-relative">Life</p>
-            <h2 class="mb-0 fw-bolder">生活印象</h2>
-          </div>
+        <div class="mb-5">
+          <span class="mb-5 d-inline-block px-4 py-1 text-white bg-primary rounded-pill position-relative dialog">Life</span>
+          <h2 class="mb-5 d-flex align-items-end"><img class="me-3" src="@/assets/images/people03.svg" height="72" alt="">生活印象</h2>
         </div>
         <div class="row g-4">
           <div class="col-12 col-md-6 col-xl-4">
@@ -200,6 +280,7 @@
 </template>
 <script>
 import emitter from '@/js/emitter'
+import ProdItem from '@/components/ProductItem.vue'
 import SweetAlert from '@/components/SweetAlert.vue'
 // swiper
 
@@ -235,7 +316,7 @@ export default {
     }
   },
   components: {
-    SweetAlert, Swiper, SwiperSlide
+    ProdItem, SweetAlert, Swiper, SwiperSlide
   },
   setup () {
     return {
@@ -277,6 +358,20 @@ export default {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+.dialog::before {
+  position: absolute;
+  content: '';
+  left: 50%;
+  top: 100%;
+  width: 0;
+  height: 0;
+  transform: translateX(-50%);
+  border: 8px solid;
+  border-color: $primary transparent transparent transparent;
+}
+.bg-new {
+  background: linear-gradient(120deg, #E5EBFD 52%, rgba(255, 255, 255, 0) 52%), url('@/assets/images/business_card02.png') no-repeat right center / 110% auto;
 }
 .bg-mode {
   @include media-breakpoint-up(lg) {

@@ -1,13 +1,11 @@
 <template>
   <v-loading :active="isLoading" ></v-loading>
   <SweetAlert></SweetAlert>
+  <HeadTitle class="mb-5" dialog="Daily" primary-text="印刷" dark-text="工作天"></HeadTitle>
   <div class="container">
-    <h1 class="fs-4 text-dark my-4">
-      <span class="material-symbols-sharp me-1 align-text-top">calendar_month</span>印刷工作天
-    </h1>
     <div class="row gy-3 justify-content-around">
       <div class="col-xl-5 col-md-6" v-for="item in prods" :key="item.id">
-        <div class="card-days d-flex align-items-center bg-light p-3">
+        <div class="card-days d-flex align-items-center p-3 border-bottom">
           <div class="card-days-content me-auto d-flex flex-grow-1 align-items-center">
             <div class="card-days-img bg-cover me-4" :style="{backgroundImage: `url(${item.imageUrl})`}"></div>
             <div class="card-days-text">
@@ -21,18 +19,9 @@
     </div>
   </div>
 </template>
-<style lang="scss">
-.card-days {
-  $width: 150px;
-  &-img {
-    max-width: $width;
-    width: 100%;
-    height: $width;
-  }
-}
-</style>
 <script>
 import emitter from '@/js/emitter'
+import HeadTitle from '@/components/HeadTitle.vue'
 import SweetAlert from '@/components/SweetAlert.vue'
 export default {
   data () {
@@ -43,7 +32,7 @@ export default {
       prods: []
     }
   },
-  components: { SweetAlert },
+  components: { HeadTitle, SweetAlert },
   methods: {
     getProds () {
       this.isLoading = true
@@ -77,3 +66,14 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.card-days {
+  $width: 150px;
+  &-img {
+    max-width: $width;
+    width: 100%;
+    height: $width;
+  }
+}
+</style>
