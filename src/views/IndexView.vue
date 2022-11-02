@@ -90,46 +90,7 @@
       </div>
     </section>
     <section>
-      <div class="container">
-        <div class="row">
-          <div class="col">
-            <div class="mx-3 h-100 d-flex flex-column border rounded-4 border-light px-5 py-4">
-              <div class="mb-3">
-                <span class="material-symbols-outlined text-primary fs-1">request_quote</span>
-              </div>
-              <h5 class="mb-3">特殊尺寸報價</h5>
-              <p class="flex-fill mb-3 text-secondary">找不到需要的尺寸？請至此頁面計算所需模數後，將由專人為您報價。</p>
-              <div class="text-end">
-                <span class="material-symbols-outlined text-primary fs-3">keyboard_double_arrow_right</span>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="mx-3 h-100 d-flex flex-column border rounded-4 border-light px-5 py-4">
-              <div class="mb-3">
-                <span class="material-symbols-sharp text-primary fs-1">calendar_month</span>
-              </div>
-              <h5 class="mb-3">印刷工作天數</h5>
-              <p class="flex-fill mb-3 text-secondary">查詢要印製的產品工作天數，了解大概的出貨時間。</p>
-              <div class="text-end">
-                <span class="material-symbols-outlined text-primary fs-3">keyboard_double_arrow_right</span>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="mx-3 h-100 d-flex flex-column border rounded-4 border-light px-5 py-4">
-              <div class="mb-3">
-                <span class="material-symbols-sharp text-primary fs-1">emoji_objects</span>
-              </div>
-              <h5 class="mb-3">印刷小知識</h5>
-              <p class="flex-fill mb-3 text-secondary">印刷的眉眉角角報你知，減少被退件機會。</p>
-              <div class="text-end">
-                <span class="material-symbols-outlined text-primary fs-3">keyboard_double_arrow_right</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <ServiceTemp></ServiceTemp>>
     </section>
     <section>
       <div class="container">
@@ -184,42 +145,6 @@
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="bg-mode">
-      <div class="container">
-        <div class="d-flex flex-lg-row flex-column align-items-lg-center px-lg-0 px-3">
-          <div class="me-lg-7 mb-lg-0 mb-3">
-            <h2 class="mb-3 fw-bolder">特殊尺寸</h2>
-            <p>輸入欲印製的尺寸，取得模數後，<br>
-              由專人為你報價 <span class="material-symbols-sharp text-primary me-2 align-middle">drafts</span><a href="mailto:yuwen7005@gmail.com" class="text-link">yuwen7005@gmail.com</a>
-            </p>
-            <p class="small">一模 92mm X 56mm (名片大小)</p>
-          </div>
-          <div class="mt-3">
-            <form>
-              <div class="d-flex align-items-end align-items-md-center">
-                <div class="d-flex flex-md-row flex-column me-4 me-md-5">
-                  <label for="modeWidth" class="me-md-2 pt-1 d-flex flex-md-column flex-row fs-5 justify-content-center align-items-center lh-1 fw-bold">
-                    <span class="mb-2 mb-md-0">寬</span>
-                    <span class="fs-8">(mm)</span>
-                  </label>
-                  <input type="number" class="form-control fs-5 border-0" id="modeWidth" v-model="mode.width" @keyup="caluMode()" style="width: 100px;">
-                </div>
-                <div class="d-flex flex-md-row flex-column me-4 me-md-5">
-                  <label for="modeHeight" class="me-md-2 pt-1 d-flex flex-md-column flex-row fs-5 justify-content-center align-items-center lh-1 fw-bold">
-                    <span class="mb-2 mb-md-0">高</span>
-                    <span class="fs-8">(mm)</span>
-                  </label>
-                  <input type="number" class="form-control fs-5 border-0" id="modeHeight" v-model="mode.height" @keyup="caluMode()" style="width: 100px;">
-                </div>
-                <div class="text-primary">
-                  <span class="fs-1 fw-bolder me-2">{{ mode.result }}</span><span>模</span>
-                </div>
-              </div>
-            </form>
           </div>
         </div>
       </div>
@@ -281,6 +206,7 @@
 <script>
 import emitter from '@/js/emitter'
 import ProdItem from '@/components/ProductItem.vue'
+import ServiceTemp from '@/components/ServiceTemp.vue'
 import SweetAlert from '@/components/SweetAlert.vue'
 // swiper
 
@@ -307,48 +233,20 @@ export default {
         prod: '# DM',
         img: bannerImage3
       }],
-      mode: {
-        width: 92,
-        height: 56,
-        result: 0
-      },
       carts: []
     }
   },
   components: {
-    ProdItem, SweetAlert, Swiper, SwiperSlide
+    ProdItem, ServiceTemp, SweetAlert, Swiper, SwiperSlide
   },
   setup () {
     return {
       modules: [Pagination, Autoplay]
     }
   },
-  methods: {
-    caluMode () {
-      if (
-        this.mode.width === '' ||
-        this.mode.width === 0 ||
-        this.mode.height === '' ||
-        this.mode.height === 0
-      ) {
-        this.mode.result = 0
-      }
-      if (this.mode.width > 0 && this.mode.height > 0) {
-        const caluHorizontal =
-          Math.ceil(this.mode.width / 92) *
-          Math.ceil(this.mode.height / 56)
-        const caluVertical =
-          Math.ceil(this.mode.width / 56) *
-          Math.ceil(this.mode.height / 92)
-        this.mode.result =
-          caluHorizontal > caluVertical ? caluVertical : caluHorizontal
-      }
-    }
-  },
   mounted () {
     // 更新購物車數量
     emitter.emit('cartCount')
-    this.caluMode()
     this.isLoading = false
   }
 }
@@ -372,13 +270,6 @@ export default {
 }
 .bg-new {
   background: linear-gradient(120deg, #E5EBFD 52%, rgba(255, 255, 255, 0) 52%), url('@/assets/images/business_card02.png') no-repeat right center / 110% auto;
-}
-.bg-mode {
-  @include media-breakpoint-up(lg) {
-    background:
-      linear-gradient(100deg, #F0F3FA 55%, rgba(240, 243, 250, 0.1) 90%, rgba(240, 243, 250, 0.3) 100%), url("https://images.unsplash.com/photo-1561015314-6bd8c1e875ee?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1530&q=80") right 0% bottom 30%/auto 170% no-repeat, #F0F3FA;
-  }
-  background: #F0F3FA;
 }
 .swiper {
   width: 100%;

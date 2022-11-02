@@ -1,7 +1,7 @@
 <template>
   <v-loading :active="isLoading" ></v-loading>
   <SweetAlert></SweetAlert>
-  <HeadTitle class="mb-5" dialog="Daily" primary-text="印刷" dark-text="工作天"></HeadTitle>
+  <HeadTitle class="mb-7" dialog="Daily" primary-text="印刷" dark-text="工作天"></HeadTitle>
   <div class="container">
     <div class="row gy-3 justify-content-around">
       <div class="col-xl-5 col-md-6" v-for="item in prods" :key="item.id">

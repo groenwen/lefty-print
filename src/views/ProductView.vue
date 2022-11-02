@@ -92,6 +92,9 @@
       </a>
     </div>
   </div>
+  <div class="mt-8 py-7 bg-gray200">
+    <ServiceTemp></ServiceTemp>>
+  </div>
 </template>
 <style lang="scss">
 table th {
@@ -101,6 +104,7 @@ table th {
 <script>
 import demoImage from '@/assets/images/demo.jpg'
 import emitter from '@/js/emitter'
+import ServiceTemp from '@/components/ServiceTemp.vue'
 import SweetAlert from '@/components/SweetAlert.vue'
 export default {
   data () {
@@ -130,7 +134,7 @@ export default {
     }
   },
   components: {
-    SweetAlert
+    ServiceTemp, SweetAlert
   },
   methods: {
     // 1.顯示所有選項 size side

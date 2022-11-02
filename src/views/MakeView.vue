@@ -1,11 +1,11 @@
 <template>
   <div>
-    <HeadTitle dialog="Try It!" primary-text="名片" dark-text="快速製作"></HeadTitle>
+    <HeadTitle class="mb-7" dialog="Try It!" primary-text="名片" dark-text="快速製作"></HeadTitle>
     <div class="container">
       <div class="row justify-content-center">
-        <div class="col">
+        <div class="col-11">
           <div class="overflow-hidden">
-            <div class="p-sm-5 p-4 bg-gray-100">
+            <div class="p-sm-6 p-4 bg-gray100">
               <div class="mb-4">
                 <a href="#" class="btn btn-sm rounded-pill me-2" :class="[isFront ? 'btn-dark' : 'btn-outline-dark']" @click.prevent="isFront = true">正面</a>
                 <a href="#" class="btn btn-sm rounded-pill" :class="[!isFront ? 'btn-dark' : 'btn-outline-dark']" @click.prevent="isFront = false">背面</a>
@@ -79,7 +79,7 @@
                 </div>
               </div>
             </div>
-            <div class="d-flex flex-md-row flex-column align-items-md-center bg-gray100 px-sm-5 px-4 py-3">
+            <div class="d-flex flex-md-row flex-column align-items-md-center bg-gray200 px-sm-5 px-4 py-3">
               <span class="text-dark mb-md-0 mb-3">90x54mm ／ 雙面一級卡 ／ 300 張</span>
               <a href="#" class="btn btn-accent ms-auto" @click.prevent="addToCart('-NCAtlm5RkX8T74O5ILR')">加入購物車</a>
             </div>
@@ -87,12 +87,16 @@
         </div>
       </div>
     </div>
+    <div class="mt-8 py-7 bg-gray200">
+      <ServiceTemp></ServiceTemp>
+    </div>
   </div>
 </template>
 
 <script>
 import emitter from '@/js/emitter'
 import HeadTitle from '@/components/HeadTitle.vue'
+import ServiceTemp from '@/components/ServiceTemp.vue'
 export default {
   data () {
     return {
@@ -120,7 +124,7 @@ export default {
       }
     }
   },
-  components: { HeadTitle },
+  components: { HeadTitle, ServiceTemp },
   watch: {
     colorItem: {
       handler (newVal, oldVal) {
