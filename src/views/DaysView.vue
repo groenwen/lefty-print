@@ -1,19 +1,21 @@
 <template>
-  <v-loading :active="isLoading" ></v-loading>
-  <SweetAlert></SweetAlert>
-  <HeadTitle class="mb-7" dialog="Daily" primary-text="印刷" dark-text="工作天"></HeadTitle>
-  <div class="container">
-    <div class="row gy-3 justify-content-around">
-      <div class="col-xl-5 col-md-6" v-for="item in prods" :key="item.id">
-        <div class="card-days d-flex align-items-center p-3 border-bottom">
-          <div class="card-days-content me-auto d-flex flex-grow-1 align-items-center">
-            <div class="card-days-img bg-cover me-4" :style="{backgroundImage: `url(${item.imageUrl})`}"></div>
-            <div class="card-days-text">
-              <h2 class="fs-5">{{ item.title }}</h2>
-              <p class="text-primary"><span class="material-symbols-sharp me-1 align-middle">calendar_month</span> {{ item.description }}</p>
+  <div class="pb-8">
+    <v-loading :active="isLoading" ></v-loading>
+    <SweetAlert></SweetAlert>
+    <HeadTitle class="mb-7" dialog="Daily" primary-text="印刷" dark-text="工作天"></HeadTitle>
+    <div class="container">
+      <div class="row gy-4 justify-content-around">
+        <div class="col-6" v-for="item in prods" :key="item.id">
+          <div class="d-flex align-items-center p-4 bg-gray100">
+            <div class="me-lg-auto d-flex flex-lg-row flex-column flex-grow-1 align-items-lg-center">
+              <div class="me-lg-4 mb-lg-0 mb-4 card-days-img bg-cover" :style="{backgroundImage: `url(${item.imageUrl})`}"></div>
+              <div class="">
+                <h2 class="mb-3 fs-5">{{ item.title }}</h2>
+                <p class="text-primary fs-5"><span class="material-symbols-sharp me-1 align-middle">calendar_month</span> {{ item.description }}</p>
+              </div>
             </div>
+            <router-link :to="`/product/${item.id}`" class="btn btn-sm btn-outline-secondary align-self-end">查看產品</router-link>
           </div>
-          <router-link :to="`/product/${item.id}`" class="btn btn-sm btn-outline-secondary">查看產品</router-link>
         </div>
       </div>
     </div>
@@ -71,9 +73,15 @@ export default {
 .card-days {
   $width: 150px;
   &-img {
-    max-width: $width;
     width: 100%;
-    height: $width;
+    height: 35vmin;
+  }
+  @include media-breakpoint-up(lg){
+    &-img {
+      max-width: $width;
+      width: 100%;
+      height: $width;
+    }
   }
 }
 </style>

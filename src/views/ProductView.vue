@@ -1,11 +1,11 @@
 <template>
   <v-loading :active="isLoading" ></v-loading>
   <SweetAlert></SweetAlert>
-  <div class="mb-5 bg-gray100">
+  <div class="mb-5 bg-gray200">
     <div class="container py-4">
       <div class="row justify-content-between align-items-center">
         <div class="order-md-1 order-2 col-md-5 col-12">
-          <span class="mb-4 d-inline-block px-3 py-2 fs-8 lh-1 text-primary bg-light rounded-pill">{{ currProd.category }}</span>
+          <span class="mb-4 d-inline-block px-3 py-2 fs-8 lh-1 text-primary bg-white rounded-pill">{{ currProd.category }}</span>
           <h1 class="mb-4 fs-2">{{ currProd.title }}</h1>
           <p class="mb-4">{{ currProd.content }}</p>
           <div class="d-flex align-items-center text-primary">
@@ -13,8 +13,8 @@
             <span class="lh-1">{{ currProd.description }}</span>
           </div>
         </div>
-        <div class="order-md-2 order-1 col-md-6 col-12">
-          <div class="bg-cover h-100" style="min-height: 300px" :style="{backgroundImage: `url(${currProd.imageUrl})`}">
+        <div class="order-md-2 order-1 col-md-5 col-12">
+          <div class="bg-cover h-100" style="min-height: 350px" :style="{backgroundImage: `url(${currProd.imageUrl})`}">
         </div>
         </div>
       </div>

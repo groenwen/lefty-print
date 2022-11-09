@@ -1,20 +1,26 @@
 <template>
   <div class="card bg-gray100 p-4 shadow-sm">
-    <div class="card-img bg-cover" :style="`background-image: url(${bgImg})`">
+    <div class="card-img bg-cover" :style="`background-image: url(${prod.imageUrl})`">
       <img src="@/assets/images/card_img.png" alt="">
     </div>
     <div class="card-body">
-      <h5 class="card-title">{{ prod }}</h5>
-      <p class="card-text fs-7 text-secondary">{{ desc }}</p>
+      <h5 class="card-title">{{ prod.title }}</h5>
+      <p class="card-text fs-7 text-secondary">{{ prod.content }}</p>
       <div class="text-end">
-        <router-link :to="`/product/${prodId}`" class="card-link btn btn-sm btn-outline-secondary stretched-link">查看產品</router-link>
+        <router-link :to="`/product/${prod.id}`" class="card-link btn btn-sm btn-outline-secondary stretched-link">查看產品</router-link>
       </div>
     </div>
   </div>
 </template>
 <script>
 export default {
-  props: ['prodId', 'prod', 'desc', 'bgImg']
+  data () {
+    return {
+    }
+  },
+  props: ['prod'],
+  mounted () {
+  }
 }
 </script>
 <style lang="scss">
@@ -25,7 +31,7 @@ export default {
   background-repeat: no-repeat;
   border-bottom-left-radius: 0px;
   border-bottom-right-radius: 0px;
-  transition: all .5s;
+  transition: all 0.5s;
 }
 .card:hover {
   .card-img {
@@ -38,7 +44,6 @@ export default {
 }
 
 .card-link {
-  transition: all .75s;
+  transition: all 0.75s;
 }
-
 </style>

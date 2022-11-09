@@ -3,7 +3,7 @@
     <HeadTitle class="mb-7" dialog="Try It!" primary-text="名片" dark-text="快速製作"></HeadTitle>
     <div class="container">
       <div class="row justify-content-center">
-        <div class="col-11">
+        <div class="col-12">
           <div class="overflow-hidden">
             <div class="p-sm-6 p-4 bg-gray100">
               <div class="mb-4">

@@ -2,21 +2,10 @@
   <v-loading :active="isLoading" ></v-loading>
   <SweetAlert></SweetAlert>
   <HeadTitle dialog="Products" dark-text="所有產品"></HeadTitle>
-  <div class="container mt-5">
+  <div class="container mt-5 pb-8">
     <div class="row g-4">
       <div class="col-12 col-md-6 col-xl-4" v-for="item in pords" :key="item.id">
-        <div class="card bg-gray100 p-4 mb-4">
-          <div class="card-img bg-cover" :style="{backgroundImage: `url(${item.imageUrl})`}">
-            <img src="@/assets/images/card_img.png" alt="">
-          </div>
-          <div class="card-body">
-            <h5 class="card-title fw-light">{{ item.title }}</h5>
-            <p class="card-text text-secondary">{{ item.content }}</p>
-            <div class="text-end">
-              <router-link :to="`/product/${item.id}`" class="card-link btn btn-sm btn-outline-secondary stretched-link">查看產品</router-link>
-            </div>
-          </div>
-        </div>
+        <ProdItem :prod="item"></ProdItem>
       </div>
     </div>
   </div>
@@ -25,6 +14,7 @@
 import emitter from '@/js/emitter'
 import HeadTitle from '@/components/HeadTitle.vue'
 import SweetAlert from '@/components/SweetAlert.vue'
+import ProdItem from '@/components/ProductItem.vue'
 export default {
   data () {
     return {
@@ -35,7 +25,7 @@ export default {
     }
   },
   components: {
-    SweetAlert, HeadTitle
+    SweetAlert, HeadTitle, ProdItem
   },
   methods: {
     getProds () {

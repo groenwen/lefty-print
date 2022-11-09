@@ -1,11 +1,11 @@
 <template>
-  <div class="bg-gray100 p-sm-7 px-4 py-5">
+  <div class="bg-dark text-white p-sm-7 px-4 py-5">
     <div class="container">
       <div class="d-flex flex-lg-row flex-column justify-content-between">
         <div class="d-flex flex-md-row flex-column justify-content-md-center align-items-md-center align-items-start">
           <img class="me-7 mb-md-0 mb-3" src="@/assets/images/logo_dark.svg" height="28" alt="">
-          <router-link to="/about" class="me-5 text-dark">關於 Print</router-link>
-          <router-link to="/products" class="me-5 text-dark">所有產品</router-link>
+          <router-link to="/about" class="me-5 text-white">關於 Print</router-link>
+          <router-link to="/products" class="me-5 text-white">所有產品</router-link>
           <ul class="list-unstyled">
             <li>
               <span class="material-symbols-sharp align-middle fs-6 me-2">headset_mic</span>( 02 ) 2222 - 2222

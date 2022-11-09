@@ -17,18 +17,18 @@
     </swiper-slide>
   </swiper>
   <div class="main">
-    <div class="bg-gray100 py-5">
+    <div class="bg-gray100 py-4">
       <div class="container d-flex flex-md-row flex-column justify-content-center align-items-center">
         <div class="d-flex align-items-center mb-md-0 mb-4">
           <div class="d-flex flex-column flex-lg-row align-items-center">
-            <span class="material-symbols-outlined me-3 fs-2 p-3 text-primary bg-white rounded-circle">backup</span>
+            <span class="material-symbols-outlined me-3 fs-3 p-2 text-primary bg-white rounded-circle">backup</span>
             <span>上傳檔案</span>
           </div>
           <span class="material-symbols-sharp text-secondary mx-2 mx-lg-5">
             chevron_right
           </span>
           <div class="d-flex flex-column flex-lg-row align-items-center">
-            <span class="material-symbols-outlined me-3 fs-2  p-3 text-primary bg-white rounded-circle">style</span>
+            <span class="material-symbols-outlined me-3 fs-3 p-2 text-primary bg-white rounded-circle">style</span>
             <span>選擇材質數量</span>
           </div>
           <span class="material-symbols-sharp text-secondary mx-2 mx-lg-5">
@@ -37,14 +37,14 @@
         </div>
         <div class="d-flex align-items-center">
           <div class="d-flex flex-column flex-lg-row align-items-center">
-            <span class="material-symbols-outlined me-3 fs-2  p-3 text-primary bg-white rounded-circle">shopping_cart</span>
+            <span class="material-symbols-outlined me-3 fs-3 p-2 text-primary bg-white rounded-circle">shopping_cart</span>
             <span>加入購物車</span>
           </div>
           <span class="material-symbols-sharp text-secondary mx-2 mx-lg-5">
             chevron_right
           </span>
           <div class="d-flex flex-column flex-lg-row align-items-center">
-            <span class="material-symbols-outlined me-3 fs-2 p-3 text-primary bg-white rounded-circle">local_shipping</span>
+            <span class="material-symbols-outlined me-3 fs-3 p-2 text-primary bg-white rounded-circle">local_shipping</span>
             <span>宅配到府</span>
           </div>
         </div>
@@ -57,21 +57,21 @@
             <div class="text-center">
               <img class="mb-4" src="@/assets/images/feature01.svg">
               <h4 class="mb-4">線上交付檔案</h4>
-              <p>線上上傳檔案，直接下單</p>
+              <p class="text-secondary">線上上傳檔案，直接下單</p>
             </div>
           </div>
           <div class="col-sm">
             <div class="text-center">
               <img class="mb-4" src="@/assets/images/feature02.svg">
               <h4 class="mb-4">專人校稿</h4>
-              <p>專人為您校稿，提醒印刷注意事項</p>
+              <p class="text-secondary">專人為您校稿，提醒印刷注意事項</p>
             </div>
           </div>
           <div class="col-sm">
             <div class="text-center">
               <img class="mb-4" src="@/assets/images/feature03.svg">
               <h4 class="mb-4">少量印製</h4>
-              <p>少量也能印，印多少算多少</p>
+              <p class="text-secondary">少量也能印，印多少算多少</p>
             </div>
           </div>
       </div>
@@ -90,112 +90,29 @@
       </div>
     </section>
     <section>
-      <ServiceTemp></ServiceTemp>>
+      <ServiceTemp></ServiceTemp>
     </section>
     <section>
       <div class="container">
-        <div class="mb-5">
-          <span class="mb-5 d-inline-block px-4 py-1 text-white bg-primary rounded-pill position-relative dialog">Business</span>
-          <h2 class="mb-5 d-flex align-items-end"><img class="me-3" src="@/assets/images/people02.svg" height="72" alt="">專業形象</h2>
-        </div>
-        <div class="row">
-          <div class="col-4">
-            <ProdItem prodId="-NCOZyXvGY3qcVjBB7EF" prod="西式信封" desc="婚禮信封、日常小卡裝載，用途多種發揮你的創意吧！" bgImg="https://images.unsplash.com/photo-1567473030492-533b30c5494c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1760&q=80"></ProdItem>
+        <div class="mb-7">
+          <div class="mb-5">
+            <span class="mb-5 d-inline-block px-4 py-1 text-white bg-primary rounded-pill position-relative dialog">Business</span>
+            <h2 class="mb-5 d-flex align-items-end"><img class="me-3" src="@/assets/images/people02.svg" height="72" alt="">專業形象</h2>
           </div>
-        </div>
-        <div class="row g-4">
-          <div class="col-12 col-md-6 col-xl-4">
-            <div class="card bg-gray100 p-4 shadow-sm">
-              <div class="card-img bg-cover" style="background-image: url('https://images.unsplash.com/photo-1561015314-6bd8c1e875ee?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1830&q=80');">
-                <img src="@/assets/images/card_img.png" alt="">
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">名片</h5>
-                <p class="card-text fs-7 text-secondary">名片、購物須知小卡、商品掉卡，名片不只是名片，發揮你的創意讓他更多變吧！</p>
-                <div class="text-end">
-                  <router-link :to="`/product/-NCAti8kHxLQcFx9Otn9`" class="card-link btn btn-sm btn-outline-secondary stretched-link">查看產品</router-link>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-md-6 col-xl-4">
-            <div class="card bg-gray-100 p-4 shadow-sm">
-              <div class="card-img bg-cover" style="background-image: url('https://images.unsplash.com/photo-1644352739408-a191ed85e513?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1658&q=80');">
-                <img src="@/assets/images/card_img.png" alt="">
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">傳單 / DM</h5>
-                <p class="card-text fs-7 text-secondary">A5 ( G16K ) 廣告宣傳</p>
-                <div class="text-end">
-                  <router-link :to="`/product/-NCU9Ky45ulZ5rOzYU-5`" class="card-link btn btn-sm btn-outline-secondary stretched-link">查看產品</router-link>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-md-6 col-xl-4">
-            <div class="card bg-gray-100 p-4 shadow-sm">
-              <div class="card-img bg-cover" style="background-image: url('https://images.unsplash.com/photo-1567473030492-533b30c5494c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1760&q=80');">
-                <img src="@/assets/images/card_img.png" alt="">
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">西式信封</h5>
-                <p class="card-text fs-7 text-secondary">婚禮信封、日常小卡裝載，用途多種發揮你的創意吧！</p>
-                <div class="text-end">
-                  <router-link :to="`/product/-NCOZyXvGY3qcVjBB7EF`" class="card-link btn btn-sm btn-outline-secondary stretched-link">查看產品</router-link>
-                </div>
-              </div>
+          <div class="row">
+            <div v-for="item in category['商業']" :key="item.id" class="col-4">
+              <ProdItem :prod="item"></ProdItem>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-    <section>
-      <div class="container">
-        <div class="mb-5">
-          <span class="mb-5 d-inline-block px-4 py-1 text-white bg-primary rounded-pill position-relative dialog">Life</span>
-          <h2 class="mb-5 d-flex align-items-end"><img class="me-3" src="@/assets/images/people03.svg" height="72" alt="">生活印象</h2>
-        </div>
-        <div class="row g-4">
-          <div class="col-12 col-md-6 col-xl-4">
-            <div class="card bg-gray-100 p-4 shadow-sm">
-              <div class="card-img bg-cover" style="background-image: url('https://images.unsplash.com/photo-1612599316791-451087c7fe15?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1724&q=80');">
-                <img src="@/assets/images/card_img.png" alt="">
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">筆記本</h5>
-                <p class="card-text fs-7 text-secondary">校園筆記本、紀念筆記本，贈品實用</p>
-                <div class="text-end">
-                  <router-link :to="`/product/-NCObnRMG1BlFnGc7TW2`" class="card-link btn btn-sm btn-outline-secondary stretched-link">查看產品</router-link>
-                </div>
-              </div>
-            </div>
+        <div class="mb-7">
+          <div class="mb-5">
+            <span class="mb-5 d-inline-block px-4 py-1 text-white bg-primary rounded-pill position-relative dialog">Life</span>
+            <h2 class="mb-5 d-flex align-items-end"><img class="me-3" src="@/assets/images/people03.svg" height="72" alt="">生活印象</h2>
           </div>
-          <div class="col-12 col-md-6 col-xl-4">
-            <div class="card bg-gray-100 p-4 shadow-sm">
-              <div class="card-img bg-cover" style="background-image: url('https://storage.googleapis.com/vue-course-api.appspot.com/groen/1663654149646.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=eTKYldy%2BVa%2BAdaO1WrzR6D%2Bw1cPD%2B5iYwrRJqi0ww5DGzdoCUI1f%2BTyX09Yki5stbOUaYP8DYXvbYNpJCnNkCOi1Vp1wolLxM45RYalLsodpGoKkZUcn0KOV3OyBkKmMT9EKz%2Fa%2F5BqK97dNYC05CXMFYFO5CRk0OWnsBFSIqhDAzl36ZzWi5q3dIPrWiHsVptcYgoBtqGgm9EnUv7uNoT4B77zyxpunc%2BU3daHsbezaYvJ8CqeOmKFSSYochblKmSJHO%2Fx9lzNj1%2BIBNwWXgvWMDkfQyNcTjyqO2UALxxm%2FraQ2kpUxaXKBEWyq3RuGOBY36fTtHnGwIWs3A4IDhA%3D%3D');">
-                <img src="@/assets/images/card_img.png" alt="">
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">卡片</h5>
-                <p class="card-text fs-7 text-secondary">傳達你的心意</p>
-                <div class="text-end">
-                  <router-link :to="`/product/-NCOW_nPIKrtdofEj_Uk`" class="card-link btn btn-sm btn-outline-secondary stretched-link">查看產品</router-link>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-12 col-md-6 col-xl-4">
-            <div class="card bg-gray-100 p-4 shadow-sm">
-              <div class="card-img bg-cover" style="background-image: url('https://images.unsplash.com/photo-1617912760717-06f3976cf18c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80');">
-                <img src="@/assets/images/card_img.png" alt="">
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">紙膠帶</h5>
-                <p class="card-text fs-7 text-secondary">選用日本和紙紙膠帶，你的手帳也可以很特別！</p>
-                <div class="text-end">
-                  <router-link :to="`/product/-NCOa4yQDlRblXcRuf1t`" class="card-link btn btn-sm btn-outline-secondary stretched-link">查看產品</router-link>
-                </div>
-              </div>
+          <div class="row">
+            <div v-for="item in category['生活']" :key="item.id" class="col-4">
+              <ProdItem :prod="item"></ProdItem>
             </div>
           </div>
         </div>
@@ -223,6 +140,7 @@ export default {
     return {
       VUE_APP: `${import.meta.env.VITE_API}/api/${import.meta.env.VITE_PATH}`,
       isLoading: false,
+      modules: [Pagination, Autoplay],
       bn: [{
         prod: '# 信封',
         img: bannerImage1
@@ -233,21 +151,69 @@ export default {
         prod: '# DM',
         img: bannerImage3
       }],
+      resProds: [],
+      sortProds: [],
+      uniqueProds: [],
+      category: {},
       carts: []
     }
   },
   components: {
     ProdItem, ServiceTemp, SweetAlert, Swiper, SwiperSlide
   },
-  setup () {
-    return {
-      modules: [Pagination, Autoplay]
+  methods: {
+    getCategory () {
+      const url = `${this.VUE_APP}/products/all`
+      this.$http.get(url)
+        .then((res) => {
+          this.resProds = res.data.products
+
+          // 不重複的 title
+          const titleArr = this.resProds.map(el => el.title)
+          const titles = titleArr.filter((el, i, arr) => arr.indexOf(el) === i)
+
+          // prodsAll 排序 尺寸 > 單雙面 > 數量 (進入產品時，選取 最小尺寸 單面 最少數量 為基準)
+          const sortList = ['width', 'height', 'side', 'p_qty', 'category']
+          const mapped = this.resProds.map((el, i) => {
+            return { index: i, value: el }
+          })
+          sortList.forEach(el => {
+            mapped.sort((a, b) => {
+              if (a.value[el] > b.value[el]) return 1
+              if (a.value[el] < b.value[el]) return -1
+              return 0
+            })
+          })
+          // prodsAll 排序後 = sortProds
+          this.sortProds = mapped.map(el => this.resProds[el.index])
+
+          // 不重複的 產品 = uniqueProds
+          this.uniqueProds = titles.map(el1 => {
+            return this.sortProds.find(el2 => el2.title === el1)
+          })
+
+          // 不重複的 category
+          const categoryArr = this.uniqueProds.map(el => el.category)
+          const categorys = categoryArr.filter((el, i, arr) => arr.indexOf(el) === i)
+
+          // 依分類儲存
+          categorys.forEach(el1 => {
+            this.category[el1] = this.uniqueProds.filter(el2 => el2.category === el1).slice(0, 3)
+          })
+          console.log(this.category['商業'])
+          // category
+          // this.
+        })
+        .catch((err) => {
+          console.dir(err)
+        })
     }
   },
   mounted () {
     // 更新購物車數量
     emitter.emit('cartCount')
     this.isLoading = false
+    this.getCategory()
   }
 }
 </script>

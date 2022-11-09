@@ -44,7 +44,7 @@
 .service-item {
   display: inline-block;
   border: 1px solid $light;
-  background-color: $white;
+  background-color: rgba($white, .7);
   &:hover {
     border: 1px solid $primary;
   }
