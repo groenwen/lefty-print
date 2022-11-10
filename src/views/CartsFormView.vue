@@ -1,7 +1,7 @@
 <template>
   <v-loading :active="isLoading" ></v-loading>
   <SweetAlert></SweetAlert>
-  <div class="container mt-5">
+  <div class="container mt-5 pb-8">
     <div class="mb-3 d-flex align-items-end">
       <img class="me-3 headtitle-img" src="@/assets/images/people01.svg" alt="">
       <div>
@@ -11,26 +11,65 @@
     </div>
     <div class="row g-4">
       <div class="col-lg-8 col-12">
-        <div class="mb-3">
-          <div class="px-3 py-2 bg-gray100 fw-bold d-flex justify-content-between">
-            <span>項目</span>
-            <button class="btn btn-sm btn-outline-secondary" @click="clearCarts()" :disabled="carts.length <= 0">清除購物車</button>
+        <div class="bg-gray100 py-6">
+          <div class="row justify-content-center">
+            <div class="col-xl-9 col-sm-8 col-10">
+              <h4 class="fw-bolder text-primary">
+                收件人
+              </h4>
+              <v-form class="py-5" ref="form" v-slot="{ errors }" @submit="onSubmit">
+                <div class="mb-4">
+                  <label for="name" class="form-label fs-7">姓名</label>
+                  <v-field name="姓名" id="name" type="text" rules="required" class="form-control" :class="{ 'is-invalid':errors['姓名'] }" v-model="order.user.name" placeholder="輸入收件人姓名" />
+                  <error-message name="姓名" class="invalid-feedback" />
+                </div>
+                <div class="mb-4">
+                  <label for="email" class="form-label fs-7">Email</label>
+                  <v-field name="email" id="email" type="email" rules="required|email" class="form-control" :class="{ 'is-invalid':errors['email'] }" v-model="order.user.email" placeholder="輸入Email" />
+                  <error-message name="email" class="invalid-feedback" />
+                </div>
+                <div class="mb-4">
+                  <label for="tel" class="form-label fs-7">電話</label>
+                  <v-field name="電話" id="tel" type="tel" rules="required|numeric|min:7|max:10" class="form-control" :class="{ 'is-invalid':errors['電話'] }" v-model="order.user.tel" placeholder="輸入收件人電話" />
+                  <error-message name="電話" class="invalid-feedback" />
+                </div>
+                <div class="mb-4">
+                  <label for="address" class="form-label fs-7">地址</label>
+                  <v-field name="地址" id="address" type="text" rules="required" class="form-control" :class="{ 'is-invalid':errors['地址'] }" v-model="order.user.address" placeholder="輸入收件地址" />
+                  <error-message name="地址" class="invalid-feedback" />
+                </div>
+                <div class="mb-4">
+                  <label for="message" class="form-label fs-7">訂單備註</label>
+                  <v-field as="textarea" name="message" id="message" class="form-control" rows="3" v-model="order.message" placeholder="可備註收貨時間"/>
+                </div>
+                <div class="d-grid col-6 mx-auto">
+                  <button type="submit" class="btn btn-accent">結帳</button>
+                </div>
+              </v-form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-12">
+        <div class="mb-6 bg-gray-100 sticky-top">
+          <div class="px-3 py-2 bg-gray100">
+            <span class="text-secondary small">項目</span>
           </div>
           <div>
             <p class="p-4 text-secondary" v-if="carts.length <= 0">購物車尚無內容</p>
             <div v-else>
-              <div v-for="item in carts" :key="item.id" class="py-4 pe-3 d-flex justify-content-between align-items-center border-bottom">
-                <div class="d-xl-flex align-items-center">
-                  <div class="mb-xl-0 mb-4 me-6">
-                    <div v-if="item.files === undefined" style="height: 100px;">
-                      &nbsp;
-                    </div>
-                    <div v-else>
-                      <img :src="item.files[0].front" class="border" height="100" alt="">&nbsp;
-                      <img :src="item.files[0].back" class="border" height="100" alt="">
-                    </div>
+              <div v-for="item in carts" :key="item.id" class="py-4 border-bottom">
+                <div class="mb-3">
+                  <div v-if="item.files === undefined" style="height: 80px;">
+                    &nbsp;
                   </div>
-                  <div class="me-6">
+                  <div v-else>
+                    <img :src="item.files[0].front" class="border" height="80" alt="">&nbsp;
+                    <img :src="item.files[0].back" class="border" height="80" alt="">
+                  </div>
+                </div>
+                <div class="px-2 d-flex justify-content-between align-items-center">
+                  <div class="">
                     <span class="fw-bold mb-2">{{ item.product.title }}</span><br>
                     <span class="text-secondary fs-7">{{ item.product.width }} mm X {{item.product.height }} mm <br>
                     {{ item.product.side }}
@@ -40,39 +79,29 @@
                     <span><span class="me-3">材質</span>{{ item.product.material }}</span><br>
                     <span><span class="me-3">數量</span>{{ item.product.p_qty }} {{ item.product.unit }}</span>
                   </div>
-                </div>
-                <div class="text-end align-self-end">
-                  <div class="text-nowrap mb-3 fw-bolder">$ {{ item.product.price }}</div>
-                  <a href="#" class="btn-link" @click.prevent="delCart(item, item.files[0].id)">
-                    <span class="material-symbols-outlined fs-5">delete</span>
-                  </a>
+                  <div class="text-nowrap fw-bold">$ {{ item.product.price }}</div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="col-lg col-12">
-        <div class="p-4 bg-light sticky-top">
-          <div class="mb-4 fs-5 text-primary">
-            訂單摘要
+        <div class="">
+          <div class="mb-3 px-3 py-2 bg-gray100">
+            <span class="text-secondary small">訂單摘要</span>
           </div>
-          <div class="mb-3 border-bottom border-white">
+          <div class="mb-3 px-3">
             <div class="mb-3 d-flex">
-              <span class="me-auto text-secondary">小計</span>
-              <span class="fw-bolder">$ {{ total }}</span>
+              <span class="me-auto text-secondary small">小計</span>
+              <span class="fw-bold">$ {{ total }}</span>
             </div>
             <div class="mb-3 d-flex">
-              <span class="me-auto text-secondary">運費</span>
+              <span class="me-auto text-secondary small">運費</span>
               <span>免運費</span>
             </div>
           </div>
-          <div class="mb-3 d-flex">
-            <span class="me-auto text-secondary">總計</span>
-            <span class="fw-bolder text-accent">$ <span class="fs-5">{{ Math.round(final_total) }}</span></span>
-          </div>
-          <div class="text-end">
-            <router-link to="/carts2" class="btn btn-accent">下一步</router-link>
+          <div class="mb-3 px-3 d-flex">
+            <span class="me-auto text-secondary small">總計</span>
+            <span class="fw-bolder text-accent">$ <span class="fs-4">{{ Math.round(final_total) }}</span></span>
           </div>
         </div>
       </div>

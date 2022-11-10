@@ -1,5 +1,6 @@
 <template>
   <div>
+    <SweetAlert></SweetAlert>
     <HeadTitle class="mb-7" dialog="Try It!" primary-text="名片" dark-text="快速製作"></HeadTitle>
     <div class="container">
       <div class="row justify-content-center">
@@ -97,9 +98,12 @@
 import emitter from '@/js/emitter'
 import HeadTitle from '@/components/HeadTitle.vue'
 import ServiceTemp from '@/components/ServiceTemp.vue'
+import SweetAlert from '@/components/SweetAlert.vue'
+
 export default {
   data () {
     return {
+      VUE_APP: `${import.meta.env.VITE_API}/api/${import.meta.env.VITE_PATH}`,
       isFront: true,
       vueCanvas: null,
       dataURL: {
@@ -124,7 +128,7 @@ export default {
       }
     }
   },
-  components: { HeadTitle, ServiceTemp },
+  components: { HeadTitle, ServiceTemp, SweetAlert },
   watch: {
     colorItem: {
       handler (newVal, oldVal) {
@@ -148,7 +152,6 @@ export default {
   methods: {
     createCanvas (side) {
       const canvas = this.$refs[side]
-      // console.log(businessCardW)
       canvas.width = 590
       canvas.height = 360
       const ctx = canvas.getContext('2d')

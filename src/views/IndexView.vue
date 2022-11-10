@@ -143,7 +143,7 @@ export default {
         prod: '# 信封',
         img: bannerImage1
       }, {
-        prod: '# 手冊',
+        prod: '即將上架',
         img: bannerImage2
       }, {
         prod: '# DM',

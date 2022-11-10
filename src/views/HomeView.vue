@@ -14,11 +14,13 @@ export default {
 </script>
 <template>
   <headerView></headerView>
-  <router-view />
+  <div class="main">
+    <router-view />
+  </div>
   <footerView></footerView>
 </template>
 <style lang="scss">
   .main {
-    min-height: 50vh;
+    min-height: 70vh;
   }
 </style>
