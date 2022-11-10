@@ -1,8 +1,8 @@
 <template>
   <v-loading :active="isLoading" ></v-loading>
   <SweetAlert></SweetAlert>
-  <div class="mb-5 bg-gray200">
-    <div class="container py-4">
+  <div class="mb-5 bg-gray100">
+    <div class="container px-4 px-md-0 py-5 py-sm-4">
       <div class="row justify-content-between align-items-center">
         <div class="order-md-1 order-2 col-md-5 col-12">
           <span class="mb-4 d-inline-block px-3 py-2 fs-8 lh-1 text-primary bg-white rounded-pill">{{ currProd.category }}</span>
@@ -14,8 +14,9 @@
           </div>
         </div>
         <div class="order-md-2 order-1 col-md-5 col-12">
-          <div class="bg-cover h-100" style="min-height: 350px" :style="{backgroundImage: `url(${currProd.imageUrl})`}">
-        </div>
+          <div class="mb-4 mb-md-0 bg-cover h-100" :style="{backgroundImage: `url(${currProd.imageUrl})`}">
+            <img class="img-fluid" src="@/assets/images/card_img.png" alt="">
+          </div>
         </div>
       </div>
     </div>
@@ -49,7 +50,7 @@
     </div>
     <div class="mb-5 position-relative" style="min-height: 100px">
       <v-loading :active="isLoading" ></v-loading>
-      <div class="bg-gray100 px-md-4 px-2 py-3">
+      <div class="border border-light bg-gray100 px-md-4 px-2 py-3">
         <table class="table table-borderless table-hover text-center">
           <thead>
             <tr class="text-secondary fs-7">

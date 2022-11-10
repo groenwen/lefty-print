@@ -1,13 +1,13 @@
 <template>
-  <div class="card bg-gray100 p-3 p-sm-4 shadow-sm">
-    <div class="card-img bg-cover" :style="`background-image: url(${prod.imageUrl})`">
-      <img src="@/assets/images/card_img.png" alt="">
+  <div class="prod-item bg-gray100 p-4 p-sm-4">
+    <div class="mb-4 prod-item-img " :style="`background-image: url(${prod.imageUrl})`">
+      <img class="img-fluid" src="@/assets/images/card_img.png" alt="">
     </div>
-    <div class="card-body">
-      <h5 class="card-title">{{ prod.title }}</h5>
-      <p class="card-text fs-7 text-secondary">{{ prod.content }}</p>
+    <div>
+      <h5 class="mb-2">{{ prod.title }}</h5>
+      <p class="mb-4 prod-item-text text-secondary small">{{ prod.content }}</p>
       <div class="text-end">
-        <router-link :to="`/product/${prod.id}`" class="card-link btn btn-sm btn-outline-secondary stretched-link">查看產品</router-link>
+        <router-link :to="`/product/${prod.id}`" class="prod-item-btn btn btn-sm btn-outline-secondary stretched-link">查看產品</router-link>
       </div>
     </div>
   </div>
@@ -24,26 +24,26 @@ export default {
 }
 </script>
 <style lang="scss">
-.card-img {
-  // height: 300px;
-  background-size: 120%;
-  background-position: center;
-  background-repeat: no-repeat;
-  border-bottom-left-radius: 0px;
-  border-bottom-right-radius: 0px;
-  transition: all 0.5s;
-}
-.card:hover {
-  .card-img {
-    background-size: 130%;
+.prod-item {
+  position: relative;
+  box-shadow: 0 0 .5rem rgba($dark, .2);
+  &-img {
+    background-size: 120%;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: all 0.5s;
+  }
+  &-text {
+    height: 3rem;
+    overflow: hidden;
+  }
+  &-btn {
+    transition: all 0.75s;
   }
 }
-.card-text {
-  height: 3rem;
-  overflow: hidden;
-}
-
-.card-link {
-  transition: all 0.75s;
+.prod-item:hover {
+  .prod-item-img {
+    background-size: 130%;
+  }
 }
 </style>

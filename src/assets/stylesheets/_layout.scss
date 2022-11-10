@@ -28,17 +28,11 @@ body, html {
 /* Chrome */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button{
-    -webkit-appearance: none !important;
     margin: 0; 
 }
-/* Firefox */
-input[type="number"]{-moz-appearance:textfield;}
 
 .btn-primary {
   color: #fff;
-}
-.ff-serif {
-  font-family: 'Noto Serif TC', serif;
 }
 
 section {
@@ -58,27 +52,4 @@ section {
 
 .btn-primary, .btn-primary:hover, .btn-primary.disabled, .btn-accent, .btn-accent:hover, .btn-accent.disabled {
   color: #fff;
-}
-
-.card-img {
-  // height: 300px;
-  background-size: 120%;
-  background-position: center;
-  background-repeat: no-repeat;
-  border-bottom-left-radius: 0px;
-  border-bottom-right-radius: 0px;
-  transition: all .5s;
-}
-.card:hover {
-  .card-img {
-    background-size: 130%;
-  }
-}
-.card-text {
-  height: 3rem;
-  overflow: hidden;
-}
-
-.card-link {
-  transition: all .75s;
 }

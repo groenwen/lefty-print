@@ -14,9 +14,7 @@ export default {
 </script>
 <template>
   <headerView></headerView>
-  <div class="main">
-    <router-view />
-  </div>
+  <router-view />
   <footerView></footerView>
 </template>
 <style lang="scss">

@@ -6,7 +6,7 @@
         <h4 class="mb-3 mb-sm-0 me-4"><span class="material-symbols-outlined me-2 text-primary fs-1 align-bottom">request_quote</span>報價流程</h4>
         <span class="text-secondary">可先使用下方模數試算小工具試算</span>
       </div>
-      <div class="mb-7 px-4 py-6 p-lg-6 border border-light rounded-4">
+      <div class="mb-7 px-4 py-6 p-xl-6 border border-light rounded-4">
         <div class="row flex-sm-row flex-column justify-content-center">
           <div class="col-md-5 col-lg-4">
             <div class="d-flex flex-column align-items-center">

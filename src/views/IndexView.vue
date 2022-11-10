@@ -17,7 +17,7 @@
         </div>
       </swiper-slide>
     </swiper>
-    <div class="main">
+    <div>
       <div class="bg-gray100 py-4">
         <div class="container d-flex justify-content-center align-items-center">
           <div class="d-flex flex-column flex-lg-row align-items-center">
@@ -96,8 +96,8 @@
               <span class="mb-5 d-inline-block px-4 py-1 text-white bg-primary rounded-pill position-relative dialog">Business</span>
               <h2 class="mb-5 d-flex align-items-end"><img class="me-3" src="@/assets/images/people02.svg" height="72" alt="">專業形象</h2>
             </div>
-            <div class="row gy-4">
-              <div v-for="item in category['商業']" :key="item.id" class="col-12 col-md-6 col-xl-4">
+            <div class="row row-cols-sm-2 row-cols-lg-3 gy-4 gy-lg-0">
+              <div v-for="item in category['商業']" :key="item.id">
                 <ProdItem :prod="item"></ProdItem>
               </div>
             </div>
@@ -107,8 +107,8 @@
               <span class="mb-5 d-inline-block px-4 py-1 text-white bg-primary rounded-pill position-relative dialog">Life</span>
               <h2 class="mb-5 d-flex align-items-end"><img class="me-3" src="@/assets/images/people03.svg" height="72" alt="">生活印象</h2>
             </div>
-            <div class="row gy-4">
-              <div v-for="item in category['生活']" :key="item.id" class="col-12 col-md-6 col-xl-4">
+            <div class="row row-cols-sm-2 row-cols-lg-3 gy-4 gy-lg-0">
+              <div v-for="item in category['生活']" :key="item.id">
                 <ProdItem :prod="item"></ProdItem>
               </div>
             </div>
@@ -123,8 +123,8 @@ import emitter from '@/js/emitter'
 import ProdItem from '@/components/ProductItem.vue'
 import ServiceTemp from '@/components/ServiceTemp.vue'
 import SweetAlert from '@/components/SweetAlert.vue'
-// swiper
 
+// swiper
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import 'swiper/css'
 import 'swiper/css/pagination'
@@ -216,11 +216,6 @@ export default {
 }
 </script>
 <style lang="scss">
-.cover-fit {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
 .dialog::before {
   position: absolute;
   content: '';

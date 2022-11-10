@@ -1,11 +1,13 @@
 <template>
-  <v-loading :active="isLoading" ></v-loading>
-  <SweetAlert></SweetAlert>
-  <HeadTitle dialog="Products" dark-text="所有產品"></HeadTitle>
-  <div class="container mt-5 pb-8">
-    <div class="row g-4">
-      <div class="col-12 col-md-6 col-xl-4" v-for="item in pords" :key="item.id">
-        <ProdItem :prod="item"></ProdItem>
+  <div>
+    <v-loading :active="isLoading" ></v-loading>
+    <SweetAlert></SweetAlert>
+    <HeadTitle dialog="Products" dark-text="所有產品"></HeadTitle>
+    <div class="container mt-5 pb-8">
+      <div class="row row-cols-sm-2 row-cols-lg-3 g-4">
+        <div v-for="item in pords" :key="item.id">
+          <ProdItem :prod="item"></ProdItem>
+        </div>
       </div>
     </div>
   </div>
