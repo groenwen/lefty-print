@@ -1,8 +1,8 @@
 <template>
-  <div class="bg-light py-6">
+  <div class="bg-light py-4 py-sm-6">
     <div class="container">
       <div class="d-flex align-items-end">
-        <img class="me-3" src="@/assets/images/people01.svg" height="80" alt="">
+        <img class="me-3 headtitle-img" src="@/assets/images/people01.svg" alt="">
         <div>
           <span class="d-inline-block mb-3 px-4 py-2 text-white lh-1 bg-primary rounded-pill position-relative dialog">{{ dialog }}</span>
           <h2 class="mb-0 fw-bolder"><span class="text-primary">{{ primaryText }}</span>{{ darkText }}</h2>
@@ -14,7 +14,6 @@
 <script>
 export default {
   props: ['dialog', 'primaryText', 'darkText']
-
 }
 </script>
 <style lang="scss">
@@ -28,5 +27,8 @@ export default {
   transform: translateX(-50%);
   border: 8px solid;
   border-color: $primary transparent transparent transparent;
+}
+.headtitle-img {
+  height: 5rem;
 }
 </style>

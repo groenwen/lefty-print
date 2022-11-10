@@ -4,9 +4,9 @@
     <SweetAlert></SweetAlert>
     <HeadTitle class="mb-7" dialog="Daily" primary-text="印刷" dark-text="工作天"></HeadTitle>
     <div class="container">
-      <div class="row gy-4 justify-content-around">
+      <div class="row g-3 gy-lg-4 justify-content-around">
         <div class="col-6" v-for="item in prods" :key="item.id">
-          <div class="d-flex align-items-center p-4 bg-gray100">
+          <div class="d-flex flex-lg-row flex-column p-3 p-sm-4 bg-gray100">
             <div class="me-lg-auto d-flex flex-lg-row flex-column flex-grow-1 align-items-lg-center">
               <div class="me-lg-4 mb-lg-0 mb-4 card-days-img bg-cover" :style="{backgroundImage: `url(${item.imageUrl})`}"></div>
               <div class="">

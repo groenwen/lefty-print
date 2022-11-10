@@ -1,8 +1,8 @@
 <template>
   <div class="container">
-    <div class="row">
-      <div class="col">
-        <router-link to="/quote" class="service-item mx-3 h-100 d-flex flex-column rounded-4 px-5 py-4">
+    <div class="row g-3">
+      <div class="col-md-4">
+        <router-link to="/quote" class="service-item mx-xl-2 h-100 d-flex flex-column rounded-4 px-lg-5 py-4 px-4">
           <div class="mb-3">
             <span class="material-symbols-outlined text-primary fs-1">request_quote</span>
           </div>
@@ -13,8 +13,8 @@
           </div>
         </router-link>
       </div>
-      <div class="col">
-        <router-link to="/days" class="service-item mx-3 h-100 d-flex flex-column rounded-4 px-5 py-4">
+      <div class="col-6 col-md-4">
+        <router-link to="/days" class="service-item mx-xl-2 h-100 d-flex flex-column rounded-4 px-lg-5 py-4 px-4">
           <div class="mb-3">
             <span class="material-symbols-sharp text-primary fs-1">calendar_month</span>
           </div>
@@ -25,8 +25,8 @@
           </div>
         </router-link>
       </div>
-      <div class="col">
-        <router-link to="" class="service-item mx-3 h-100 d-flex flex-column rounded-4 px-5 py-4">
+      <div class="col-6 col-md-4">
+        <router-link to="/days" class="service-item mx-xl-2 h-100 d-flex flex-column rounded-4 px-lg-5 py-4 px-4">
           <div class="mb-3">
             <span class="material-symbols-sharp text-primary fs-1">emoji_objects</span>
           </div>

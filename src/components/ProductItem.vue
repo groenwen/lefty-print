@@ -1,5 +1,5 @@
 <template>
-  <div class="card bg-gray100 p-4 shadow-sm">
+  <div class="card bg-gray100 p-3 p-sm-4 shadow-sm">
     <div class="card-img bg-cover" :style="`background-image: url(${prod.imageUrl})`">
       <img src="@/assets/images/card_img.png" alt="">
     </div>
