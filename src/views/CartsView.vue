@@ -1,7 +1,7 @@
 <template>
   <v-loading :active="isLoading" ></v-loading>
   <SweetAlert></SweetAlert>
-  <div class="container mt-5">
+  <div class="container mt-5 mb-8">
     <div class="mb-3 d-flex align-items-end">
       <img class="me-3 headtitle-img" src="@/assets/images/people01.svg" alt="">
       <div>
@@ -20,25 +20,27 @@
             <p class="p-4 text-secondary" v-if="carts.length <= 0">購物車尚無內容</p>
             <div v-else>
               <div v-for="item in carts" :key="item.id" class="py-4 pe-3 d-flex justify-content-between align-items-center border-bottom">
-                <div class="d-xl-flex align-items-center">
-                  <div class="mb-xl-0 mb-4 me-6">
-                    <div v-if="item.files === undefined" style="height: 100px;">
+                <div class="row g-5">
+                  <div class="col-6">
+                    <div v-if="item.files === undefined">
                       &nbsp;
                     </div>
-                    <div v-else>
-                      <img :src="item.files[0].front" class="border" height="100" alt="">&nbsp;
-                      <img :src="item.files[0].back" class="border" height="100" alt="">
+                    <div v-else class="d-flex">
+                      <img :src="item.files[0].front" class="d-inline-block border img-fluid me-1" style="width: 50%" alt="">
+                      <img :src="item.files[0].back" class="d-inline-block border img-fluid" style="width: 50%" alt="">
                     </div>
                   </div>
-                  <div class="me-6">
-                    <span class="fw-bold mb-2">{{ item.product.title }}</span><br>
-                    <span class="text-secondary fs-7">{{ item.product.width }} mm X {{item.product.height }} mm <br>
-                    {{ item.product.side }}
-                    </span>
-                  </div>
-                  <div class="text-secondary fs-7">
-                    <span><span class="me-3">材質</span>{{ item.product.material }}</span><br>
-                    <span><span class="me-3">數量</span>{{ item.product.p_qty }} {{ item.product.unit }}</span>
+                  <div class="col-auto d-flex align-items-center">
+                    <div class="me-5">
+                      <span class="fw-bold mb-2">{{ item.product.title }}</span><br>
+                      <span class="text-secondary fs-7">{{ item.product.width }} mm X {{item.product.height }} mm <br>
+                      {{ item.product.side }}
+                      </span>
+                    </div>
+                    <div class="text-secondary fs-7">
+                      <span><span class="me-3 small">材質</span>{{ item.product.material }}</span><br>
+                      <span><span class="me-3 small">數量</span>{{ item.product.p_qty }} {{ item.product.unit }}</span>
+                    </div>
                   </div>
                 </div>
                 <div class="text-end align-self-end">
@@ -72,7 +74,7 @@
             <span class="fw-bolder text-accent">$ <span class="fs-5">{{ Math.round(final_total) }}</span></span>
           </div>
           <div class="text-end">
-            <router-link to="/carts2" class="btn btn-accent">下一步</router-link>
+            <router-link to="/carts2" class="btn btn-accent" :class="{'disabled': carts.length <= 0}">下一步</router-link>
           </div>
         </div>
       </div>

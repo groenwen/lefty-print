@@ -2,8 +2,8 @@
   <div>
     <v-loading :active="isLoading" ></v-loading>
     <SweetAlert></SweetAlert>
-    <HeadTitle dialog="Products" dark-text="所有產品"></HeadTitle>
-    <div class="container mt-5 pb-8">
+    <HeadTitle class="mb-7" dialog="All Products" dark-text="所有產品"></HeadTitle>
+    <div class="container pb-8">
       <div class="row row-cols-sm-2 row-cols-lg-3 g-4">
         <div v-for="item in pords" :key="item.id">
           <ProdItem :prod="item"></ProdItem>

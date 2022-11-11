@@ -1,28 +1,27 @@
 <template>
   <div>
     <SweetAlert></SweetAlert>
-    <HeadTitle class="mb-7" dialog="Try It!" primary-text="名片" dark-text="快速製作"></HeadTitle>
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-12">
-          <div class="overflow-hidden">
-            <div class="p-sm-6 p-4 bg-gray100">
-              <div class="mb-4">
+    <HeadTitle class="" dialog="Try It !" primary-text="名片" dark-text="快速製作"></HeadTitle>
+    <div class="bg-gray100 mb-8">
+      <div class="container pt-5 pb-6 pb-lg-8">
+        <div class="row justify-content-center">
+          <div class="col-xl-11">
+            <div class="">
+              <div class="mb-5">
                 <a href="#" class="btn btn-sm rounded-pill me-2" :class="[isFront ? 'btn-dark' : 'btn-outline-dark']" @click.prevent="isFront = true">正面</a>
                 <a href="#" class="btn btn-sm rounded-pill" :class="[!isFront ? 'btn-dark' : 'btn-outline-dark']" @click.prevent="isFront = false">背面</a>
               </div>
               <div class="row align-items-start">
-                <div class="col-xl-8 col-12">
-                  <div class="d-flex flex-lg-row flex-column align-items-start">
-                    <div class="order-lg-1 order-2 mt-lg-2 me-lg-3 mb-lg-0 mb-3 color-list d-flex flex-lg-column flex-row justify-content-center align-items-center align-self-start">
-                      <a v-for="item in colorList" :key="item" href="#" class="color-item m-1 border shadow-sm" :class="{ active: colorItem === item }" :style="{ backgroundColor: item }" @click.prevent="colorItem = item"></a>
-                    </div>
-                    <div class="order-lg-2 order-1 me-4 mb-xl-0 mb-3 ratio ratio-5x3">
-                      <!-- <img class="img-fluid" src="@/assets/images/business_card.png" alt=""> -->
-                      <div ref="businessCard" class="canvas-wrap">
-                        <canvas ref="front" class="cover-fit shadow-sm" width="100%" height="100%" v-show="isFront"></canvas>
-                        <canvas ref="back" class="cover-fit shadow-sm" width="100%" height="100%" v-show="!isFront"></canvas>
+                <div class="col-12 col-lg-8">
+                  <div class="mb-5 mb-lg-0 d-flex flex-md-row flex-column align-items-start">
+                    <div class="me-4 mb-xl-0 mb-3 ratio ratio-5x3">
+                      <div ref="businessCard" class="canvas-wrap p-shadow">
+                        <canvas ref="front" class="cover-fit " width="100%" height="100%" v-show="isFront"></canvas>
+                        <canvas ref="back" class="cover-fit" width="100%" height="100%" v-show="!isFront"></canvas>
                       </div>
+                    </div>
+                    <div class="me-xl-5 mb-md-0 mb-3 d-flex flex-md-column flex-row justify-content-center align-items-center align-self-start color-list">
+                      <a v-for="item in colorList" :key="item" href="#" class="color-item m-1 border shadow-sm" :class="{ active: colorItem === item }" :style="{ backgroundColor: item }" @click.prevent="colorItem = item"></a>
                     </div>
                     <div class="d-none">
                       <img ref="phone_icon" src="@/assets/images/phone_icon.svg" alt="" />
@@ -30,7 +29,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-xl-4 col-12">
+                <div class="col-12 col-lg-4">
                   <form>
                     <div v-show="isFront">
                       <div class="mb-2 form-floating">
@@ -80,20 +79,55 @@
                 </div>
               </div>
             </div>
-            <div class="d-flex flex-md-row flex-column align-items-md-center bg-gray200 px-sm-5 px-4 py-3">
-              <span class="text-dark mb-md-0 mb-3">90x54mm ／ 雙面一級卡 ／ 300 張</span>
-              <a href="#" class="btn btn-accent ms-auto" @click.prevent="addToCart('-NCAtlm5RkX8T74O5ILR')">加入購物車</a>
-            </div>
           </div>
         </div>
       </div>
+      <div class=" bg-light">
+        <div class="container d-flex align-items-center px-sm-5 px-4 py-3">
+          <span class="text-dark me-3 mb-md-0 mb-3">90x54mm ／ 雙面 ／ 一級卡 ／ 300 張</span>
+          <a href="#" class="btn btn-accent ms-auto flex-shrink-0" @click.prevent="addToCart('-NCAtlm5RkX8T74O5ILR')">
+            加入購物車<span class="ms-2 material-symbols-sharp align-middle fs-5">shopping_cart</span>
+          </a>
+        </div>
+      </div>
     </div>
-    <div class="mt-8 py-7 bg-gray200">
+    <div class="py-7 bg-gray200">
       <ServiceTemp></ServiceTemp>
     </div>
   </div>
 </template>
-
+<style lang="scss">
+.cover-fit {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.p-shadow {
+  box-shadow: 0 0 0.5rem rgba($dark, 0.25);
+}
+.color-list {
+  width: 32px;
+  @include media-breakpoint-down(md) {
+    width: 100%;
+    height: 38px;
+  }
+}
+.color-item {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  transition: width 0.25s, height 0.25s;
+  &:hover {
+    opacity: 0.8;
+  }
+  &.active {
+    width: 30px;
+    height: 30px;
+    border-color: #e5ebfd !important;
+  }
+}
+</style>
 <script>
 import emitter from '@/js/emitter'
 import HeadTitle from '@/components/HeadTitle.vue'
@@ -152,102 +186,99 @@ export default {
   methods: {
     createCanvas (side) {
       const canvas = this.$refs[side]
-      canvas.width = 590
-      canvas.height = 360
+      const width = 720
+      const height = 420
+      canvas.width = width
+      canvas.height = height
       const ctx = canvas.getContext('2d')
 
       // 先設定顏色 再繪製位置及尺寸
       ctx.fillStyle = '#fff'
-      ctx.fillRect(0, 0, 590, 360)
+      ctx.fillRect(0, 0, width, height)
       ctx.save()
 
       ctx.fillStyle = this.colorItem
-      ctx.fillRect(0, 315, 590, 45)
-      ctx.fillRect(0, 308, 590, 2)
+      ctx.fillRect(0, height - 45, width, 45)
+      ctx.fillRect(0, height - 45 - 2 - 5, width, 2)
       ctx.save()
 
       ctx.restore()
+
       // 公司
-      ctx.font = '20px sans-serif'
+      ctx.font = '24px sans-serif'
       ctx.fillStyle = this.colorItem
-      ctx.fillText(this[`${side}Form`].company, 40, 50)
+      ctx.fillText(this[`${side}Form`].company, height * 0.15, height * 0.15)
       ctx.save()
+
+      const nameX = 120
+      const nameY = height * 0.4
+      const phoneY = height * 0.6
+      const emailY = height * 0.7
 
       if (side === 'front') {
         // 名字
-        const nameX = 120
-        // let eNameX = 0
-        ctx.font = '36px sans-serif'
+        ctx.font = '44px sans-serif'
         ctx.fillStyle = '#323232'
-        ctx.fillText(this[`${side}Form`].name, nameX, 150)
+        ctx.fillText(this[`${side}Form`].name, nameX, nameY)
         const nameW = ctx.measureText(this[`${side}Form`].name).width
         ctx.save()
+
         // 英文名字
         ctx.font = '20px sans-serif'
         ctx.fillStyle = '#323232'
-        ctx.fillText(this[`${side}Form`].e_name, nameX + nameW + 20, 150)
+        ctx.fillText(this[`${side}Form`].e_name, nameX + nameW + 20, nameY)
         ctx.save()
-        // phone icon
-        // ctx.font = '16px Material Symbols Outlined'
-        // ctx.fillStyle = this.colorItem
-        // ctx.fillText('phone_iphone', 120, 225)
-        // ctx.save()
+
         // phone
-        ctx.font = '14px sans-serif'
+        ctx.font = '18px sans-serif'
         ctx.fillStyle = this.colorItem
-        ctx.fillText('手機 |', 120, 223) // 145
+        ctx.fillText('手機', nameX, phoneY)
+        ctx.fillStyle = this.colorItem
+        ctx.fillText('|', nameX + 50, phoneY)
         ctx.fillStyle = '#323232'
-        ctx.fillText(this[`${side}Form`].phone, 175, 223) // 200
+        ctx.fillText(this[`${side}Form`].phone, nameX + 70, phoneY)
         ctx.save()
-        // email icon
-        // ctx.font = '16px Material Symbols Outlined'
-        // ctx.fillStyle = this.colorItem
-        // ctx.fillText('mail', 120, 256)
-        // ctx.save()
+
         // email
-        ctx.font = '14px sans-serif'
+        ctx.font = '18px sans-serif'
         ctx.fillStyle = this.colorItem
-        ctx.fillText('信箱 |', 120, 253) // 145
+        ctx.fillText('信箱', nameX, emailY)
+        ctx.fillStyle = this.colorItem
+        ctx.fillText('|', nameX + 50, emailY)
         ctx.fillStyle = '#323232'
-        ctx.fillText(this[`${side}Form`].email, 175, 253) // 200
+        ctx.fillText(this[`${side}Form`].email, nameX + 70, emailY)
         ctx.save()
       } else {
-        const nameX = 120
         // 名字
-        ctx.font = '28px sans-serif'
+        ctx.font = '36px sans-serif'
         ctx.fillStyle = '#323232'
-        ctx.fillText(this[`${side}Form`].name, nameX, 150)
+        ctx.fillText(this[`${side}Form`].name, nameX, nameY)
         const nameW = ctx.measureText(this[`${side}Form`].name).width
+
         // 英文名字
         ctx.font = '20px sans-serif'
         ctx.fillStyle = '#323232'
-        ctx.fillText(this[`${side}Form`].e_name, nameX + nameW + 20, 150)
+        ctx.fillText(this[`${side}Form`].e_name, nameX + nameW + 20, nameY)
         ctx.save()
-        // phone icon
-        // ctx.font = '16px Material Symbols Outlined'
-        // ctx.fillStyle = this.colorItem
-        // ctx.fillText('phone_iphone', 120, 225)
-        // ctx.save()
+
         // phone
-        ctx.font = '14px sans-serif'
+        ctx.font = '18px sans-serif'
         ctx.fillStyle = this.colorItem
-        ctx.fillText('Mobile |', 120, 223) // 145
-        ctx.save()
-        ctx.font = '14px sans-serif'
+        ctx.fillText('Mobile', nameX, phoneY)
+        ctx.fillStyle = this.colorItem
+        ctx.fillText('|', nameX + 80, phoneY)
         ctx.fillStyle = '#323232'
-        ctx.fillText(this[`${side}Form`].phone, 193, 223) // 218
+        ctx.fillText(this[`${side}Form`].phone, nameX + 100, phoneY)
         ctx.save()
-        // email icon
-        // ctx.font = '16px Material Symbols Outlined'
-        // ctx.fillStyle = this.colorItem
-        // ctx.fillText('mail', 120, 256)
-        // ctx.save()
+
         // email
-        ctx.font = '14px sans-serif'
+        ctx.font = '18px sans-serif'
         ctx.fillStyle = this.colorItem
-        ctx.fillText('Email   |', 120, 253) // 147
+        ctx.fillText('Email', nameX, emailY)
+        ctx.fillStyle = this.colorItem
+        ctx.fillText('|', nameX + 80, emailY)
         ctx.fillStyle = '#323232'
-        ctx.fillText(this[`${side}Form`].email, 191, 253) // 218
+        ctx.fillText(this[`${side}Form`].email, nameX + 100, emailY)
         ctx.save()
       }
 
@@ -310,6 +341,7 @@ export default {
               emitter.emit('sweetalert', `${res.data.message}, success`)
             })
             .catch((err) => {
+              console.dir(err)
               emitter.emit('sweetalert', `${err.response.data.message}, error`)
             })
         })
@@ -330,27 +362,3 @@ export default {
   }
 }
 </script>
-<style lang="scss">
-.color-list {
-  width: 32px;
-  @include media-breakpoint-down(lg){
-    width: 100%;
-    height: 38px;
-  }
-}
-.color-item {
-  display: inline-block;
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  transition: width .25s, height .25s;
-  &:hover {
-    opacity: .8;
-  }
-  &.active {
-    width: 30px;
-    height: 30px;
-    border-color: #E5EBFD !important;
-  }
-}
-</style>

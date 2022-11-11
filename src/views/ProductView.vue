@@ -5,9 +5,9 @@
     <div class="container px-4 px-md-0 py-5 py-sm-4">
       <div class="row justify-content-between align-items-center">
         <div class="order-md-1 order-2 col-md-5 col-12">
-          <span class="mb-4 d-inline-block px-3 py-2 fs-8 lh-1 text-primary bg-white rounded-pill">{{ currProd.category }}</span>
-          <h1 class="mb-4 fs-2">{{ currProd.title }}</h1>
-          <p class="mb-4">{{ currProd.content }}</p>
+          <span class="mb-4 d-inline-block px-3 py-2 fs-8 lh-1 text-primary bg-light rounded-pill">{{ currProd.category }}</span>
+          <h1 class="mb-4 fw-bolder fs-2">{{ currProd.title }}</h1>
+          <p class="mb-4 text-secondary">{{ currProd.content }}</p>
           <div class="d-flex align-items-center text-primary">
             <span class="material-symbols-sharp fs-2 me-3 ">calendar_month</span>
             <span class="lh-1">{{ currProd.description }}</span>

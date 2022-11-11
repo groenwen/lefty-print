@@ -19,10 +19,10 @@
               <router-link to="/make" class="nav-link" :class="{'active':this.$route.path === '/make'}">名片快速製作</router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/quote" class="nav-link" :class="{'active':this.$route.path === '/quote'}">特殊尺寸詢價</router-link>
+              <router-link to="/quote" class="nav-link" :class="{'active':this.$route.path === '/quote'}"><span class="material-symbols-sharp">request_quote</span></router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/days" class="nav-link" :class="{'active':this.$route.path === '/days'}"><span class="material-symbols-sharp me-1 align-middle">calendar_month</span>印刷工作天</router-link>
+              <router-link to="/days" class="nav-link ms-md-1" :class="{'active':this.$route.path === '/days'}"><span class="material-symbols-sharp">calendar_month</span></router-link>
             </li>
             <li class="nav-item">
               <router-link to="/carts" class="nav-link-cart position-relative pe-1" :class="{'active':this.$route.path === '/carts'}">
