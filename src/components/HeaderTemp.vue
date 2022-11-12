@@ -25,7 +25,7 @@
               <router-link to="/days" class="nav-link ms-md-1" :class="{'active':this.$route.path === '/days'}"><span class="material-symbols-sharp">calendar_month</span></router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/carts" class="nav-link-cart position-relative pe-1" :class="{'active':this.$route.path === '/carts'}">
+              <router-link to="/carts" class="nav-link-cart position-relative pe-1" :class="{'active':this.$route.path === '/carts' || this.$route.path === '/carts2'}">
                 <span class="material-symbols-sharp">shopping_cart</span>
                 <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                   {{carts?.length}}
@@ -116,8 +116,8 @@ export default {
   background-color: $gray-100;
   border-radius: 50%;
   &.active {
-    color: $white;
-    background-color: $primary;
+    color: $primary;
+    background-color: $light;
   }
 }
 .navbar-nav .show > .nav-link, .navbar-nav .nav-link.active {

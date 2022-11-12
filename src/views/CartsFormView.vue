@@ -2,18 +2,25 @@
   <v-loading :active="isLoading" ></v-loading>
   <SweetAlert></SweetAlert>
   <div class="container mt-5 pb-8">
-    <div class="mb-3 d-flex align-items-end">
-      <img class="me-3 headtitle-img" src="@/assets/images/people01.svg" alt="">
-      <div>
-        <span class="d-inline-block mb-3 px-4 py-2 text-white lh-1 bg-primary rounded-pill position-relative dialog">Cart</span>
-        <h2 class="mb-0 fw-bolder">購物車</h2>
+    <div class="row mb-3">
+      <div class="col-md-8 d-flex justify-content-between align-items-end">
+        <div class="d-flex align-items-end">
+          <img class="me-3 headtitle-img" src="@/assets/images/people01.svg" alt="">
+          <div>
+            <span class="d-inline-block mb-3 px-4 py-2 text-white lh-1 bg-primary rounded-pill position-relative dialog">Cart</span>
+            <h2 class="mb-0 fw-bolder">購物車</h2>
+          </div>
+        </div>
+        <router-link to="/carts" class="btn-link">
+          <span class="material-symbols-outlined align-text-bottom">arrow_back</span>上一步
+        </router-link>
       </div>
     </div>
-    <div class="row g-4">
-      <div class="col-lg-8 col-12">
-        <div class="bg-gray100 py-6">
+    <div class="row g-lg-5">
+      <div class="order-2 order-md-1 col-md-8">
+        <div class="bg-gray100 pt-6 pb-5">
           <div class="row justify-content-center">
-            <div class="col-xl-9 col-sm-8 col-10">
+            <div class="col-xl-9 col-lg-8 col-10">
               <h4 class="fw-bolder text-primary">
                 收件人
               </h4>
@@ -38,49 +45,51 @@
                   <v-field name="地址" id="address" type="text" rules="required" class="form-control" :class="{ 'is-invalid':errors['地址'] }" v-model="order.user.address" placeholder="輸入收件地址" />
                   <error-message name="地址" class="invalid-feedback" />
                 </div>
-                <div class="mb-4">
+                <div class="mb-5">
                   <label for="message" class="form-label fs-7">訂單備註</label>
                   <v-field as="textarea" name="message" id="message" class="form-control" rows="3" v-model="order.message" placeholder="可備註收貨時間"/>
                 </div>
-                <div class="d-grid col-6 mx-auto">
+                <div class="d-grid col-md-7 mx-auto mb-5">
                   <button type="submit" class="btn btn-accent">結帳</button>
                 </div>
+                <!-- <div class="d-grid col-md-3 mx-auto">
+                  <router-link to="/carts" class="btn btn-outline-secondary">
+                    上一步
+                  </router-link>
+                </div> -->
               </v-form>
             </div>
           </div>
         </div>
       </div>
-      <div class="col-lg-4 col-12">
-        <div class="mb-6 bg-gray-100 sticky-top">
+      <div class="order-1 order-md-2 col-md-4">
+        <div class="mb-5 bg-gray-100">
           <div class="px-3 py-2 bg-gray100">
             <span class="text-secondary small">項目</span>
           </div>
           <div>
-            <p class="p-4 text-secondary" v-if="carts.length <= 0">購物車尚無內容</p>
-            <div v-else>
-              <div v-for="item in carts" :key="item.id" class="py-4 border-bottom">
-                <div class="mb-3">
-                  <div v-if="item.files === undefined" style="height: 80px;">
-                    &nbsp;
+            <div v-for="item in carts" :key="item.id" class="py-3 border-bottom">
+              <div class="mb-3">
+                <div v-if="item.files[0].back === undefined">
+                    <img :src="item.files[0].front" class="border img-fluid" style="width: 400px;" alt="">
                   </div>
-                  <div v-else>
-                    <img :src="item.files[0].front" class="border" height="80" alt="">&nbsp;
-                    <img :src="item.files[0].back" class="border" height="80" alt="">
+                  <div v-else class="d-flex">
+                    <img :src="item.files[0].front" class="border img-fluid me-1" style="width: 48.5%; max-width: 200px;" alt="">
+                    <img :src="item.files[0].back" class="border img-fluid" style="width: 48.5%; max-width: 200px;" alt="">
                   </div>
+              </div>
+              <div class="px-2 d-flex justify-content-between align-items-center">
+                <div class="">
+                  <span class="fw-bold mb-2">{{ item.product.title }}</span><br>
+                  <span class="text-secondary fs-7">{{ item.product.width }} x {{item.product.height }}mm <br>
+                  {{ item.product.side }}
+                  </span>
                 </div>
-                <div class="px-2 d-flex justify-content-between align-items-center">
-                  <div class="">
-                    <span class="fw-bold mb-2">{{ item.product.title }}</span><br>
-                    <span class="text-secondary fs-7">{{ item.product.width }} mm X {{item.product.height }} mm <br>
-                    {{ item.product.side }}
-                    </span>
-                  </div>
-                  <div class="text-secondary fs-7">
-                    <span><span class="me-3">材質</span>{{ item.product.material }}</span><br>
-                    <span><span class="me-3">數量</span>{{ item.product.p_qty }} {{ item.product.unit }}</span>
-                  </div>
-                  <div class="text-nowrap fw-bold">$ {{ item.product.price }}</div>
+                <div class="text-secondary fs-7">
+                  <span>{{ item.product.material }}</span><br>
+                  <span>{{ item.product.p_qty }} {{ item.product.unit }}</span>
                 </div>
+                <div class="text-nowrap fw-bold">$ {{ item.product.price }}</div>
               </div>
             </div>
           </div>
@@ -89,19 +98,19 @@
           <div class="mb-3 px-3 py-2 bg-gray100">
             <span class="text-secondary small">訂單摘要</span>
           </div>
-          <div class="mb-3 px-3">
-            <div class="mb-3 d-flex">
+          <div class="px-3">
+            <div class="mb-2 d-flex">
               <span class="me-auto text-secondary small">小計</span>
               <span class="fw-bold">$ {{ total }}</span>
             </div>
-            <div class="mb-3 d-flex">
+            <div class="mb-2 d-flex">
               <span class="me-auto text-secondary small">運費</span>
               <span>免運費</span>
             </div>
           </div>
-          <div class="mb-3 px-3 d-flex">
+          <div class="px-3 d-flex">
             <span class="me-auto text-secondary small">總計</span>
-            <span class="fw-bolder text-accent">$ <span class="fs-4">{{ Math.round(final_total) }}</span></span>
+            <span class="fw-bolder text-accent">$ <span class="fs-5">{{ Math.round(final_total) }}</span></span>
           </div>
         </div>
       </div>
@@ -233,9 +242,10 @@ export default {
         .then((res) => {
           this.isLoading = false
           emitter.emit('sweetalert', `${res.data.message}, success`)
-          // 送出後 1.更新購物車 2.重置表單
-          this.getCarts()
-          this.$refs.form.resetForm()
+          // 送出後 1.更新購物車 2.重置表單 3.退回購物車
+          // this.getCarts()
+          // this.$refs.form.resetForm()
+          this.$router.push(`/OrderCheckout/${res.data.orderId}`)
         })
         .catch((err) => {
           this.isLoading = false
