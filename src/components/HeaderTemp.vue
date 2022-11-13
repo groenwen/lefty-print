@@ -19,10 +19,10 @@
               <router-link to="/make" class="nav-link" :class="{'active':this.$route.path === '/make'}">名片快速製作</router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/quote" class="nav-link" :class="{'active':this.$route.path === '/quote'}"><span class="material-symbols-sharp">request_quote</span></router-link>
+              <router-link to="/quote" data-bs-toggle="tooltip" data-bs-title="特殊尺寸報價" class="nav-link" :class="{'active':this.$route.path === '/quote'}"><span class="material-symbols-sharp">request_quote</span></router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/days" class="nav-link ms-md-1" :class="{'active':this.$route.path === '/days'}"><span class="material-symbols-sharp">calendar_month</span></router-link>
+              <router-link to="/days" data-bs-toggle="tooltip" data-bs-title="印刷工作天" class="nav-link ms-md-1" :class="{'active':this.$route.path === '/days'}"><span class="material-symbols-sharp">calendar_month</span></router-link>
             </li>
             <li class="nav-item">
               <router-link to="/carts" class="nav-link-cart position-relative pe-1" :class="{'active':this.$route.path === '/carts' || this.$route.path === '/carts2'}">
@@ -40,11 +40,14 @@
   </nav>
 </template>
 <script>
+import '@popperjs/core/dist/umd/popper.min.js'
+import Tooltip from 'bootstrap/js/dist/tooltip.js'
 import 'bootstrap/js/dist/offcanvas.js'
 import emitter from '@/js/emitter'
 export default {
   data () {
     return {
+      tooltipList: [],
       carts: []
     }
   },
@@ -78,10 +81,11 @@ export default {
     }
   },
   mounted () {
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    this.tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new Tooltip(tooltipTriggerEl))
     emitter.on('cartCount', () => {
       this.getCarts()
     })
-    console.log(this.$route.path)
   }
 }
 </script>

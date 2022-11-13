@@ -4,7 +4,7 @@
     <SweetAlert></SweetAlert>
     <HeadTitle class="mb-7" dialog="All Products" dark-text="所有產品"></HeadTitle>
     <div class="container pb-8">
-      <div class="row row-cols-sm-2 row-cols-lg-3 g-4">
+      <div class="row row-cols-sm-2 row-cols-lg-3 g-3 g-md-5">
         <div v-for="item in pords" :key="item.id">
           <ProdItem :prod="item"></ProdItem>
         </div>
