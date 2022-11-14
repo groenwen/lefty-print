@@ -1,16 +1,10 @@
 <template>
-  <v-loading :active="isLoading" ></v-loading>
+  <v-loading :active="isLoading"></v-loading>
   <SweetAlert></SweetAlert>
-  <div class="container mt-5 pb-8">
+  <div class="container pt-5 pb-8">
     <div class="row mb-3">
       <div class="col-md-8 d-flex justify-content-between align-items-end">
-        <div class="d-flex align-items-end">
-          <img class="me-3 headtitle-img" src="@/assets/images/people01.svg" alt="">
-          <div>
-            <span class="d-inline-block mb-3 px-4 py-2 text-white lh-1 bg-primary rounded-pill position-relative dialog">Cart</span>
-            <h2 class="mb-0 fw-bolder">購物車</h2>
-          </div>
-        </div>
+        <HeadTitle dialog="Cart" dark-text="購物車"></HeadTitle>
         <router-link to="/carts" class="btn-link">
           <span class="material-symbols-outlined align-text-bottom">arrow_back</span>上一步
         </router-link>
@@ -18,36 +12,36 @@
     </div>
     <div class="row g-lg-5">
       <div class="order-2 order-md-1 col-md-8">
-        <div class="bg-gray100 pt-6 pb-5">
+        <div class="bg-gray200 pt-6 pb-5">
           <div class="row justify-content-center">
             <div class="col-xl-9 col-lg-8 col-10">
               <h4 class="fw-bolder text-primary">
                 收件人
               </h4>
               <v-form class="py-5" ref="form" v-slot="{ errors }" @submit="onSubmit">
-                <div class="mb-4">
+                <div class="mb-2 mb-sm-4">
                   <label for="name" class="form-label fs-7">姓名</label>
                   <v-field name="姓名" id="name" type="text" rules="required" class="form-control" :class="{ 'is-invalid':errors['姓名'] }" v-model="order.user.name" placeholder="輸入收件人姓名" />
                   <error-message name="姓名" class="invalid-feedback" />
                 </div>
-                <div class="mb-4">
+                <div class="mb-2 mb-sm-4">
                   <label for="email" class="form-label fs-7">Email</label>
                   <v-field name="email" id="email" type="email" rules="required|email" class="form-control" :class="{ 'is-invalid':errors['email'] }" v-model="order.user.email" placeholder="輸入Email" />
                   <error-message name="email" class="invalid-feedback" />
                 </div>
-                <div class="mb-4">
+                <div class="mb-2 mb-sm-4">
                   <label for="tel" class="form-label fs-7">電話</label>
                   <v-field name="電話" id="tel" type="tel" rules="required|numeric|min:7|max:10" class="form-control" :class="{ 'is-invalid':errors['電話'] }" v-model="order.user.tel" placeholder="輸入收件人電話" />
                   <error-message name="電話" class="invalid-feedback" />
                 </div>
-                <div class="mb-4">
+                <div class="mb-2 mb-sm-4">
                   <label for="address" class="form-label fs-7">地址</label>
                   <v-field name="地址" id="address" type="text" rules="required" class="form-control" :class="{ 'is-invalid':errors['地址'] }" v-model="order.user.address" placeholder="輸入收件地址" />
                   <error-message name="地址" class="invalid-feedback" />
                 </div>
-                <div class="mb-5">
+                <div class="mb-4 mb-sm-5">
                   <label for="message" class="form-label fs-7">訂單備註</label>
-                  <v-field as="textarea" name="message" id="message" class="form-control" rows="3" v-model="order.message" placeholder="可備註收貨時間"/>
+                  <v-field as="textarea" name="message" id="message" class="form-control" rows="3" v-model="order.message" placeholder="可備註收貨時間" />
                 </div>
                 <div class="d-grid col-md-7 mx-auto mb-5">
                   <button type="submit" class="btn btn-accent">結帳</button>
@@ -71,18 +65,18 @@
             <div v-for="item in carts" :key="item.id" class="py-3 border-bottom">
               <div class="mb-3">
                 <div v-if="item.files[0].back === undefined">
-                    <img :src="item.files[0].front" class="border img-fluid" style="width: 400px;" alt="">
-                  </div>
-                  <div v-else class="d-flex">
-                    <img :src="item.files[0].front" class="border img-fluid me-1" style="width: 48.5%; max-width: 200px;" alt="">
-                    <img :src="item.files[0].back" class="border img-fluid" style="width: 48.5%; max-width: 200px;" alt="">
-                  </div>
+                  <img :src="item.files[0].front" class="border img-fluid" style="width: 400px;" alt="">
+                </div>
+                <div v-else class="d-flex">
+                  <img :src="item.files[0].front" class="border img-fluid me-1" style="width: 48.5%; max-width: 200px;" alt="">
+                  <img :src="item.files[0].back" class="border img-fluid" style="width: 48.5%; max-width: 200px;" alt="">
+                </div>
               </div>
               <div class="px-2 d-flex justify-content-between align-items-center">
                 <div class="">
                   <span class="fw-bold mb-2">{{ item.product.title }}</span><br>
                   <span class="text-secondary fs-7">{{ item.product.width }} x {{item.product.height }}mm <br>
-                  {{ item.product.side }}
+                    {{ item.product.side }}
                   </span>
                 </div>
                 <div class="text-secondary fs-7">
@@ -94,7 +88,7 @@
             </div>
           </div>
         </div>
-        <div class="">
+        <div class="mb-5">
           <div class="mb-3 px-3 py-2 bg-gray100">
             <span class="text-secondary small">訂單摘要</span>
           </div>
@@ -120,6 +114,7 @@
 <script>
 import emitter from '@/js/emitter'
 import SweetAlert from '@/components/SweetAlert.vue'
+import HeadTitle from '@/components/HeadTitle.vue'
 // todo: 地址導入縣市 select
 export default {
   data () {
@@ -141,7 +136,7 @@ export default {
     }
   },
   components: {
-    SweetAlert
+    SweetAlert, HeadTitle
   },
   methods: {
     getCarts () {
@@ -259,18 +254,5 @@ export default {
 }
 </script>
 <style lang="scss">
-.dialog::before {
-  position: absolute;
-  content: '';
-  left: 50%;
-  top: 100%;
-  width: 0;
-  height: 0;
-  transform: translateX(-50%);
-  border: 8px solid;
-  border-color: $primary transparent transparent transparent;
-}
-.headtitle-img {
-  height: 5rem;
-}
+
 </style>

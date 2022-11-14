@@ -1,13 +1,9 @@
 <template>
-  <div class="bg-gray100 py-5 py-sm-6">
-    <div class="container">
-      <div class="d-flex align-items-end">
-        <img class="me-3 headtitle-img" src="@/assets/images/people01.svg" alt="">
-        <div>
-          <span class="mb-3 px-4 py-2 d-inline-block text-white small lh-1 bg-primary rounded-pill position-relative dialog">{{ dialog }}</span>
-          <h2 class="mb-0 fw-bolder"><span class="text-primary">{{ primaryText }}</span>{{ darkText }}</h2>
-        </div>
-      </div>
+  <div class="d-flex align-items-end">
+    <img class="me-3 headtitle-img" src="@/assets/images/people01.svg" alt="">
+    <div>
+      <span class="mb-3 px-4 py-2 d-inline-block text-white small lh-1 bg-primary rounded-pill position-relative dialog">{{ dialog }}</span>
+      <h3 class="mb-0 fw-bolder"><span class="text-primary">{{ primaryText }}</span>{{ darkText }}</h3>
     </div>
   </div>
 </template>
@@ -19,7 +15,7 @@ export default {
 <style lang="scss">
 .dialog::before {
   position: absolute;
-  content: '';
+  content: "";
   left: 50%;
   top: 100%;
   width: 0;

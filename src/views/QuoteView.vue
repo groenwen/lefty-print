@@ -1,6 +1,10 @@
 <template>
   <div>
-    <HeadTitle class="mb-7" dialog="報價" primary-text="特殊尺寸" dark-text="報價"></HeadTitle>
+    <div class="mb-7 bg-gray100 py-5 py-sm-6">
+      <div class="container">
+        <HeadTitle dialog="報價" primary-text="特殊尺寸" dark-text="報價"></HeadTitle>
+      </div>
+    </div>
     <div class="container">
       <div class="mb-5 d-flex flex-sm-row flex-column align-items-sm-end">
         <h4 class="mb-3 mb-sm-0 me-4"><span class="material-symbols-outlined me-2 text-primary fs-1 align-bottom">request_quote</span>報價流程</h4>

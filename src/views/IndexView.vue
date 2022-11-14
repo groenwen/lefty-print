@@ -96,7 +96,7 @@
               <span class="mb-5 d-inline-block px-4 py-1 text-white bg-primary rounded-pill position-relative dialog">Business</span>
               <h2 class="mb-5 d-flex align-items-end"><img class="me-3" src="@/assets/images/people02.svg" height="72" alt="">專業形象</h2>
             </div>
-            <div class="row row-cols-sm-2 row-cols-lg-3 gy-4 gy-lg-0">
+            <div class="row row-cols-sm-2 row-cols-lg-3 gy-5 gy-lg-0">
               <div v-for="item in category['商業']" :key="item.id">
                 <ProdItem :prod="item"></ProdItem>
               </div>
@@ -107,7 +107,7 @@
               <span class="mb-5 d-inline-block px-4 py-1 text-white bg-primary rounded-pill position-relative dialog">Life</span>
               <h2 class="mb-5 d-flex align-items-end"><img class="me-3" src="@/assets/images/people03.svg" height="72" alt="">生活印象</h2>
             </div>
-            <div class="row row-cols-sm-2 row-cols-lg-3 gy-4 gy-lg-0">
+            <div class="row row-cols-sm-2 row-cols-lg-3 gy-5 gy-lg-0">
               <div v-for="item in category['生活']" :key="item.id">
                 <ProdItem :prod="item"></ProdItem>
               </div>

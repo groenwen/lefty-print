@@ -5,9 +5,9 @@
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar">
         <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><img src="@/assets/images/logo.svg" class="navbar-logo" alt=""></h5>
+          <router-link to="/" class="navbar-brand"><img src="@/assets/images/logo.svg" class="navbar-logo" alt=""></router-link>
           <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
@@ -19,15 +19,24 @@
               <router-link to="/make" class="nav-link" :class="{'active':this.$route.path === '/make'}">名片快速製作</router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/quote" data-bs-toggle="tooltip" data-bs-title="特殊尺寸報價" class="nav-link" :class="{'active':this.$route.path === '/quote'}"><span class="material-symbols-sharp">request_quote</span></router-link>
+              <router-link to="/qa" class="nav-link" :class="{'active':this.$route.path === '/qa'}">印刷小知識</router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/days" data-bs-toggle="tooltip" data-bs-title="印刷工作天" class="nav-link ms-md-1" :class="{'active':this.$route.path === '/days'}"><span class="material-symbols-sharp">calendar_month</span></router-link>
+              <router-link to="/quote" data-bs-toggle="tooltip" data-bs-title="特殊尺寸報價" class="nav-link d-flex align-items-center" :class="{'active':this.$route.path === '/quote'}">
+                <span class="material-symbols-sharp">request_quote</span>
+                <span class="ms-2 d-inline-block d-lg-none">特殊尺寸報價</span>
+              </router-link>
+            </li>
+            <li class="nav-item mb-lg-0 mb-2">
+              <router-link to="/days" data-bs-toggle="tooltip" data-bs-title="印刷工作天" class="nav-link d-flex align-items-center" :class="{'active':this.$route.path === '/days'}">
+                <span class="material-symbols-sharp">calendar_month</span>
+                <span class="ms-2 d-inline-block d-lg-none">印刷工作天</span>
+              </router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/carts" class="nav-link-cart position-relative pe-1" :class="{'active':this.$route.path === '/carts' || this.$route.path === '/carts2'}">
+              <router-link to="/carts" class="nav-link-cart position-relative" :class="{'active':this.$route.path === '/carts' || this.$route.path === '/carts2'}">
                 <span class="material-symbols-sharp">shopping_cart</span>
-                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-accent">
                   {{carts?.length}}
                   <span class="visually-hidden">unread messages</span>
                 </span>
@@ -41,14 +50,26 @@
 </template>
 <script>
 import '@popperjs/core/dist/umd/popper.min.js'
-import Tooltip from 'bootstrap/js/dist/tooltip.js'
-import 'bootstrap/js/dist/offcanvas.js'
+import BsTooltip from 'bootstrap/js/dist/tooltip.js'
+import BsOffCanvas from 'bootstrap/js/dist/offcanvas.js'
 import emitter from '@/js/emitter'
 export default {
   data () {
     return {
       tooltipList: [],
+      bsOffcanvas: null,
       carts: []
+      // path: ''
+    }
+  },
+  computed: {
+    path () {
+      return this.$route.path
+    }
+  },
+  watch: {
+    path () {
+      this.hideOffcanvas()
     }
   },
   methods: {
@@ -78,11 +99,40 @@ export default {
         .catch((err) => {
           alert(err.response.data.message)
         })
+    },
+    hideOffcanvas () {
+      this.bsOffcanvas.hide()
+    },
+    setTooltip (windowWidth) {
+      // lg 以上才 shown tooltip
+      if (windowWidth >= 992) {
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        this.tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => {
+          return new BsTooltip(tooltipTriggerEl, {
+            trigger: 'hover'
+          })
+        })
+        console.log('yes')
+      } else {
+        // 否則 移除 tooltip
+        this.tooltipList.forEach(el => {
+          el.disable()
+        })
+      }
     }
   },
   mounted () {
-    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-    this.tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new Tooltip(tooltipTriggerEl))
+    // lg 以上才顯示 tooltip
+    const vm = this
+    vm.fullWidth = window.innerWidth
+    this.setTooltip(vm.fullWidth)
+    window.onresize = () => {
+      vm.fullWidth = window.innerWidth
+      this.setTooltip(vm.fullWidth)
+    }
+
+    // offcanvas
+    this.bsOffcanvas = new BsOffCanvas('#offcanvasNavbar')
     emitter.on('cartCount', () => {
       this.getCarts()
     })
@@ -99,7 +149,8 @@ export default {
 .navbar-toggler {
   border-width: 0px;
 }
-.nav-link, .nav-link-cart {
+.nav-link,
+.nav-link-cart {
   width: fit-content;
   margin-top: 1rem;
   @include media-breakpoint-up(md) {
@@ -116,15 +167,15 @@ export default {
   height: $size;
   color: $dark;
   line-height: $size;
-  padding: .5rem;
+  padding: 0.5rem;
   background-color: $gray-100;
   border-radius: 50%;
   &.active {
     color: $primary;
-    background-color: $light;
   }
 }
-.navbar-nav .show > .nav-link, .navbar-nav .nav-link.active {
+.navbar-nav .show > .nav-link,
+.navbar-nav .nav-link.active {
   color: $primary !important;
   // border-bottom: 2px solid $primary;
 }

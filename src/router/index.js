@@ -14,15 +14,19 @@ const router = createRouter({
           component: () => import('../views/IndexView.vue')
         },
         {
-          path: '/about',
+          path: 'about',
           component: () => import('../views/AboutView.vue')
         },
         {
-          path: '/make',
+          path: 'qa',
+          component: () => import('../views/QaView.vue')
+        },
+        {
+          path: 'make',
           component: () => import('../views/MakeView.vue')
         },
         {
-          path: '/quote',
+          path: 'quote',
           component: () => import('../views/QuoteView.vue')
         },
         {

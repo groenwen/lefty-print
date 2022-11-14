@@ -1,14 +1,10 @@
 <template>
-  <v-loading :active="isLoading" ></v-loading>
+  <v-loading :active="isLoading"></v-loading>
   <SweetAlert></SweetAlert>
-  <div class="container mt-5 mb-8">
-    <div>
-      <div class="mb-3 d-flex align-items-end">
-        <img class="me-3 headtitle-img" src="@/assets/images/people01.svg" alt="">
-        <div>
-          <span class="d-inline-block mb-3 px-4 py-2 text-white lh-1 bg-primary rounded-pill position-relative dialog">Cart</span>
-          <h2 class="mb-0 fw-bolder">購物車</h2>
-        </div>
+  <div class="container pt-5 pb-8">
+    <div class="mb-3">
+      <div class="container">
+        <HeadTitle dialog="Cart" dark-text="購物車"></HeadTitle>
       </div>
     </div>
     <div class="row g-4">
@@ -23,20 +19,20 @@
             <div v-else>
               <div v-for="item in carts" :key="item.id" class="py-4 pe-3 d-flex justify-content-between align-items-center border-bottom">
                 <div class="row g-5">
-                  <div class="col-6">
+                  <div class="col-sm-6">
                     <div v-if="item.files[0].back === undefined">
-                      <img :src="item.files[0].front" class="border img-fluid" alt="">
+                      <img :src="item.files[0].front" class="border img-fluid" style="width: 400px;" alt="">
                     </div>
                     <div v-else class="d-flex">
-                      <img :src="item.files[0].front" class="border img-fluid me-1" style="width: 48.5%;" alt="">
-                      <img :src="item.files[0].back" class="border img-fluid" style="width: 48.5%;" alt="">
+                      <img :src="item.files[0].front" class="border img-fluid me-1" style="width: 48.5%; max-width: 200px;" alt="">
+                      <img :src="item.files[0].back" class="border img-fluid" style="width: 48.5%; max-width: 200px;" alt="">
                     </div>
                   </div>
-                  <div class="col-auto d-flex align-items-center">
-                    <div class="me-5">
+                  <div class="col-sm-auto d-flex align-items-center">
+                    <div class="me-5 ps-2 ps-sm-0">
                       <span class="fw-bold mb-2">{{ item.product.title }}</span><br>
                       <span class="text-secondary fs-7">{{ item.product.width }} x {{item.product.height }} mm <br>
-                      {{ item.product.side }}
+                        {{ item.product.side }}
                       </span>
                     </div>
                     <div class="text-secondary fs-7">
@@ -86,6 +82,7 @@
 <script>
 import emitter from '@/js/emitter'
 import SweetAlert from '@/components/SweetAlert.vue'
+import HeadTitle from '@/components/HeadTitle.vue'
 // todo: 地址導入縣市 select
 export default {
   data () {
@@ -107,7 +104,7 @@ export default {
     }
   },
   components: {
-    SweetAlert
+    SweetAlert, HeadTitle
   },
   methods: {
     getCarts () {
@@ -225,18 +222,5 @@ export default {
 }
 </script>
 <style lang="scss">
-.dialog::before {
-  position: absolute;
-  content: '';
-  left: 50%;
-  top: 100%;
-  width: 0;
-  height: 0;
-  transform: translateX(-50%);
-  border: 8px solid;
-  border-color: $primary transparent transparent transparent;
-}
-.headtitle-img {
-  height: 5rem;
-}
+
 </style>

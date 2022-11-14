@@ -3,15 +3,15 @@
     <div class="container">
       <div class="px-3 py-6 border-bottom border-white border-opacity-25">
         <div class="row align-items-center">
-          <div class="col-2">
-            <img class="" src="@/assets/images/logo_white.svg" alt="">
+          <div class="col-lg-2">
+            <img class="mb-4 mb-lg-0" src="@/assets/images/logo_white.svg" alt="">
           </div>
-          <div class="col-2 d-flex flex-column">
-            <router-link to="/products" class="mb-3 text-white">所有產品</router-link>
-            <router-link to="/make" class="text-white" :class="{'active':this.$route.path === '/make'}">名片快速製作</router-link>
+          <div class="col-md-3 col-lg-2 d-flex flex-column">
+            <router-link to="/products" class="mb-2 mb-lg-3 text-white">所有產品</router-link>
+            <router-link to="/make" class="mb-2 mb-lg-0 text-white" :class="{'active':this.$route.path === '/make'}">名片快速製作</router-link>
           </div>
-          <div class="col-2 d-flex flex-column">
-            <router-link to="/quote" class="mb-3 text-white" :class="{'active':this.$route.path === '/quote'}">
+          <div class="col-md-3 col-lg-2 d-flex flex-column">
+            <router-link to="/quote" class="mb-2 mb-lg-3 text-white" :class="{'active':this.$route.path === '/quote'}">
               <span class="material-symbols-sharp fs-5 align-text-bottom">request_quote</span> 特殊尺寸報價
             </router-link>
             <router-link to="/days" class="text-white" :class="{'active':this.$route.path === '/days'}">

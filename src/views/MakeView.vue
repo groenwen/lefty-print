@@ -1,7 +1,11 @@
 <template>
   <div>
     <SweetAlert></SweetAlert>
-    <HeadTitle class="" dialog="Try It !" primary-text="名片" dark-text="快速製作"></HeadTitle>
+    <div class="bg-gray100 py-5 py-sm-6">
+      <div class="container">
+        <HeadTitle dialog="Try It !" primary-text="名片" dark-text="快速製作"></HeadTitle>
+      </div>
+    </div>
     <div class="bg-gray100 mb-8">
       <div class="container pt-5 pb-6 pb-lg-8">
         <div class="row justify-content-center">
