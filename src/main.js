@@ -1,12 +1,12 @@
-// google material-symbols
-import 'material-symbols'
-
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 
 import router from './router'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
+
+// // google material-symbols
+// import 'material-symbols'
 
 // Loading
 import Loading from 'vue-loading-overlay'
