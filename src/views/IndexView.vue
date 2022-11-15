@@ -165,6 +165,7 @@ export default {
       const url = `${this.VUE_APP}/products/all`
       this.$http.get(url)
         .then((res) => {
+          this.isLoading = false
           this.resProds = res.data.products
 
           // 不重複的 title
@@ -199,7 +200,6 @@ export default {
           categorys.forEach(el1 => {
             this.category[el1] = this.uniqueProds.filter(el2 => el2.category === el1).slice(0, 3)
           })
-          this.isLoading = false
         })
         .catch((err) => {
           this.isLoading = false
@@ -210,7 +210,6 @@ export default {
   mounted () {
     // 更新購物車數量
     emitter.emit('cartCount')
-    this.isLoading = false
     this.getCategory()
   }
 }
