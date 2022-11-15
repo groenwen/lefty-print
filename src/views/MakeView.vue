@@ -1,13 +1,14 @@
 <template>
   <div>
+    <v-loading :active="isLoading"></v-loading>
     <SweetAlert></SweetAlert>
     <div class="bg-gray100 py-5 py-sm-6">
       <div class="container">
-        <HeadTitle dialog="Try It !" primary-text="名片" dark-text="快速製作"></HeadTitle>
+        <HeadTitle dialog="NEW" primary-text="名片" dark-text="線上製作"></HeadTitle>
       </div>
     </div>
     <div class="bg-gray100 mb-8">
-      <div class="container pt-5 pb-6 pb-lg-8">
+      <div class="container pt-5 pb-6 pb-lg-7">
         <div class="row justify-content-center">
           <div class="col-xl-11">
             <div class="">
@@ -89,8 +90,8 @@
       <div class=" bg-light">
         <div class="container d-flex align-items-center px-sm-5 px-4 py-3">
           <span class="text-dark me-3 mb-md-0 mb-3">90x54mm ／ 雙面 ／ 一級卡 ／ 300 張</span>
-          <a href="#" class="btn btn-accent ms-auto flex-shrink-0" @click.prevent="addToCart('-NCAtlm5RkX8T74O5ILR')">
-            加入購物車<span class="ms-2 material-symbols-sharp align-middle fs-5">shopping_cart</span>
+          <a href="#" class="btn btn-accent ms-auto d-flex align-items-center" @click.prevent="addToCart('-NCAtlm5RkX8T74O5ILR')">
+            加入購物車<span class="ms-2 material-symbols-sharp fs-5">shopping_cart</span>
           </a>
         </div>
       </div>
@@ -142,6 +143,7 @@ export default {
   data () {
     return {
       VUE_APP: `${import.meta.env.VITE_API}/api/${import.meta.env.VITE_PATH}`,
+      isLoading: false,
       isFront: true,
       vueCanvas: null,
       dataURL: {
@@ -318,6 +320,7 @@ export default {
       let url = `${this.VUE_APP}/cart`
       this.$http.get(url)
         .then((res) => {
+          this.isLoading = false
           this.carts = res.data.data.carts
 
           let http = 'post'
@@ -345,12 +348,13 @@ export default {
               emitter.emit('sweetalert', `${res.data.message}, success`)
             })
             .catch((err) => {
-              console.dir(err)
+              this.isLoading = false
               emitter.emit('sweetalert', `${err.response.data.message}, error`)
             })
         })
         .catch((err) => {
-          alert(err.response.data.message)
+          this.isLoading = false
+          emitter.emit('sweetalert', `${err.response.data.message}, error`)
         })
     }
   },

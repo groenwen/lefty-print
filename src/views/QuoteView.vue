@@ -1,8 +1,9 @@
 <template>
   <div>
-    <div class="mb-7 bg-gray100 py-5 py-sm-6">
+    <v-loading :active="isLoading"></v-loading>
+    <div class="mb-5 mb-sm-7 bg-gray100 py-5 py-sm-6">
       <div class="container">
-        <HeadTitle dialog="報價" primary-text="特殊尺寸" dark-text="報價"></HeadTitle>
+        <HeadTitle dialog="Quote" primary-text="特殊尺寸" dark-text="報價"></HeadTitle>
       </div>
     </div>
     <div class="container">
@@ -26,7 +27,10 @@
             <div class="d-flex flex-column align-items-center">
               <h5 class="mb-3 mb-sm-5 d-flex align-items-center"><span class="me-3 step-circle">2</span><span>寄送 Email 由專人為您報價</span></h5>
               <span class="mb-3 quote-item-icon material-symbols-outlined text-primary">mail</span>
-              <a class="text-primary">abcdef@gmail.com</a>
+              <div class="px-4 py-1 rounded-pill bg-gray100 d-flex align-items-center">
+                <span class="material-symbols-sharp me-2 text-light fs-5">send</span>
+                <a href="mailto:abcdef@gmail.com">abcdef@gmail.com</a>
+              </div>
             </div>
           </div>
         </div>
@@ -78,6 +82,7 @@ import ServiceTemp from '@/components/ServiceTemp.vue'
 export default {
   data () {
     return {
+      isLoading: true,
       mode: {
         width: 92,
         height: 56,
@@ -109,6 +114,7 @@ export default {
     }
   },
   mounted () {
+    this.isLoading = false
     this.caluMode()
   }
 }

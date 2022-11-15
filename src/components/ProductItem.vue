@@ -1,5 +1,5 @@
 <template>
-  <div class="prod-item bg-gray100 p-4 p-sm-5">
+  <div class="prod-item bg-gray100 border border-gray200 p-4 p-sm-5">
     <div class="mb-4 prod-item-img " :style="`background-image: url(${prod.imageUrl})`">
       <img class="img-fluid" src="@/assets/images/card_img.png" alt="">
     </div>
@@ -26,7 +26,7 @@ export default {
 <style lang="scss">
 .prod-item {
   position: relative;
-  box-shadow: 0 0 .75rem rgba($dark, .25);
+  box-shadow: 0 0 .5rem rgba($dark, .1);
   &-img {
     background-size: 120%;
     background-position: center;

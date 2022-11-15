@@ -38,6 +38,11 @@ configure({
   // validateOnInput: true // 調整為：輸入文字時，就立即進行驗證
 })
 
+// route 換頁自動回到最上方
+router.afterEach((to, from, next) => {
+  window.scroll(0, 0)
+})
+
 const app = createApp(App)
 
 app.use(createPinia())

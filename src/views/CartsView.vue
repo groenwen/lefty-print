@@ -112,7 +112,6 @@ export default {
       const url = `${this.VUE_APP}/cart`
       this.$http.get(url)
         .then((res) => {
-          console.log(res.data.data)
           this.isLoading = false
           this.total = res.data.data.total
           this.final_total = res.data.data.final_total
@@ -135,7 +134,6 @@ export default {
             }
           })
           this.carts = fileCarts
-          console.log(this.carts[2].files[0].back)
           // 更新 nav cart
           emitter.emit('cartCount')
         })

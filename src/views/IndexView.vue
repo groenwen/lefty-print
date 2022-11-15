@@ -81,7 +81,7 @@
               <span class="mb-5 d-inline-block px-4 py-1 text-white bg-primary rounded-pill position-relative dialog">New</span>
               <h2 class="mb-5 d-flex align-items-end fw-bolder"><img class="me-3" src="@/assets/images/people01.svg" height="72" alt=""><span class="text-primary">名片</span>快速製作</h2>
               <p class="mb-5 text-secondary">新功能試用立即體驗，未來將提供更多產品及更完善的線上編輯器，沒有專業繪圖軟體也能製作印刷品。</p>
-              <a href="" class="btn btn-accent">立即體驗</a>
+              <router-link to="/make" class="btn btn-accent">立即體驗</router-link>
             </div>
           </div>
         </div>
@@ -161,6 +161,7 @@ export default {
   },
   methods: {
     getCategory () {
+      this.isLoading = true
       const url = `${this.VUE_APP}/products/all`
       this.$http.get(url)
         .then((res) => {
@@ -198,12 +199,11 @@ export default {
           categorys.forEach(el1 => {
             this.category[el1] = this.uniqueProds.filter(el2 => el2.category === el1).slice(0, 3)
           })
-          console.log(this.category['商業'])
-          // category
-          // this.
+          this.isLoading = false
         })
         .catch((err) => {
-          console.dir(err)
+          this.isLoading = false
+          emitter.emit('sweetalert', `${err.response.data.message}, error`)
         })
     }
   },

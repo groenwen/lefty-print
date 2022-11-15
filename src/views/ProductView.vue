@@ -1,5 +1,5 @@
 <template>
-  <v-loading :active="isLoading" ></v-loading>
+  <v-loading :active="isLoading"></v-loading>
   <SweetAlert></SweetAlert>
   <div class="mb-5 bg-gray100">
     <div class="container px-4 px-md-0 py-5 py-sm-4">
@@ -22,75 +22,66 @@
     </div>
   </div>
   <div class="container">
-    <div class="mb-5">
-      <span class="me-3 mb-1 fs-7 text-secondary">尺寸&emsp;&nbsp;</span>
-      <a href="#"
-        v-for="(item, index) in sizeList"
-        :key="`size${index}`"
-        @click.prevent="checkSizeAndSide('size', item)"
-        class="btn btn-sm rounded-pill me-3"
-        :class="[this.currSize === item ? 'btn-dark' : 'btn-outline-secondary']"
-        >{{ item }}
-      </a>
-    </div>
-    <div class="mb-5">
-      <span class="me-3 mb-1 fs-7 text-secondary">單/雙面</span>
-      <a href="#"
-        v-for="(item, index) in sideList"
-        :key="`side${index}`"
-        @click.prevent="checkSizeAndSide('side', item)"
-        class="btn btn-sm rounded-pill me-3"
-        :class="[
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <div class="mb-5">
+          <span class="me-3 mb-1 fs-7 text-secondary">尺寸&emsp;&nbsp;</span>
+          <a href="#" v-for="(item, index) in sizeList" :key="`size${index}`" @click.prevent="checkSizeAndSide('size', item)" class="btn btn-sm rounded-pill me-3" :class="[this.currSize === item ? 'btn-dark' : 'btn-outline-secondary']">{{ item }}
+          </a>
+        </div>
+        <div class="mb-5">
+          <span class="me-3 mb-1 fs-7 text-secondary">單/雙面</span>
+          <a href="#" v-for="(item, index) in sideList" :key="`side${index}`" @click.prevent="checkSizeAndSide('side', item)" class="btn btn-sm rounded-pill me-3" :class="[
           this.currProd.side === item
             ? 'btn-dark'
             : 'btn-outline-secondary'
-        ]"
-        >{{ item }}</a
-      >
-    </div>
-    <div class="mb-5 position-relative" style="min-height: 100px">
-      <v-loading :active="isLoading" ></v-loading>
-      <div class="border border-light bg-gray100 px-md-4 px-2 py-3">
-        <table class="table table-borderless table-hover text-center">
-          <thead>
-            <tr class="text-secondary fs-7">
-              <th class="text-start ps-md-4 fw-normal" width="16%">尺寸</th>
-              <th class="fw-normal" width="16%">單 / 雙面</th>
-              <th class="fw-normal">材質</th>
-              <th class="fw-normal">數量</th>
-              <th class="fw-normal">價格</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="item in sortProds" :key="item.id" :class="[this.currProd.id === item.id ? 'bg-light' : 'bg-white']" class="position-relative">
-              <th class="text-start text-secondary ps-md-4">{{ item.width }}x{{ item.height }}mm</th>
-              <td class="text-secondary">{{ item.side }}</td>
-              <td :class="{'text-primary':this.currProd.id === item.id}">{{ item.material }}</td>
-              <td :class="{'text-primary':this.currProd.id === item.id}">{{ item.p_qty }} {{ item.unit }}</td>
-              <td :class="{'text-primary':this.currProd.id === item.id}">
-                $<router-link :to="`/product/${item.id}`" class="fw-bolder stretched-link" :class="{'text-dark':this.currProd.id !== item.id}">{{ item.price }}</router-link>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        ]">{{ item }}</a>
+        </div>
+        <div class="mb-5 position-relative" style="min-height: 100px">
+          <v-loading :active="isLoading"></v-loading>
+          <div class="border border-light bg-gray100 px-md-4 px-2 py-3">
+            <table class="table table-borderless table-hover text-center">
+              <thead>
+                <tr class="text-secondary fs-7">
+                  <th class="text-start ps-md-4 fw-normal" width="16%">尺寸</th>
+                  <th class="fw-normal" width="16%">單 / 雙面</th>
+                  <th class="fw-normal">材質</th>
+                  <th class="fw-normal">數量</th>
+                  <th class="fw-normal">價格</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="item in sortProds" :key="item.id" :class="[this.currProd.id === item.id ? 'bg-light' : 'bg-white']" class="position-relative">
+                  <th class="text-start text-secondary ps-md-4">{{ item.width }}x{{ item.height }}mm</th>
+                  <td class="text-secondary">{{ item.side }}</td>
+                  <td :class="{'text-primary':this.currProd.id === item.id}">{{ item.material }}</td>
+                  <td :class="{'text-primary':this.currProd.id === item.id}">{{ item.p_qty }} {{ item.unit }}</td>
+                  <td :class="{'text-primary':this.currProd.id === item.id}">
+                    $<router-link :to="`/product/${item.id}`" class="fw-bolder stretched-link" :class="{'text-dark':this.currProd.id !== item.id}">{{ item.price }}</router-link>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <p class="mb-5 text-end text-secondary">{{ currProd.width }}x{{ currProd.height }}mm ／ {{ currProd.side }} ／ {{ currProd.material }} ／ {{ currProd.p_qty }} 張</p>
+        <div class="mb-5">
+          <form @submit.prevent="uploadFile">
+            <input class="inputfile" type="file" id="formFile" @change="choseFile">
+            <label for="formFile" class="p-4 w-100 text-secondary text-center bg-gray100 border-dash">
+              <span v-if="fileName.length <= 0"><span class="me-2 material-symbols-sharp fs-1 align-middle">cloud_upload</span>上傳檔案</span>
+              <span v-else><span class="me-2 material-symbols-sharp fs-1 align-middle">cloud_upload</span>{{ fileName }}</span>
+            </label>
+          </form>
+        </div>
+        <div class="mb-5 d-flex justify-content-end align-items-center">
+          <span class="text-primary me-5">NT$ <span class="fs-2 fw-bold">{{currProd.price}}</span></span>
+          <a href="#" class="btn btn-accent" @click.prevent="addToCart()" :class="{'disabled' : this.file.name === undefined}">
+            <span class="material-symbols-sharp align-text-bottom">shopping_cart</span>
+            加入購物車
+          </a>
+        </div>
       </div>
-    </div>
-    <p class="mb-5 text-end text-secondary">{{ currProd.width }}x{{ currProd.height }}mm ／ {{ currProd.side }} ／ {{ currProd.material }} ／ {{ currProd.p_qty }} 張</p>
-    <div class="mb-5">
-      <form @submit.prevent="uploadFile">
-        <input class="inputfile" type="file" id="formFile" @change="choseFile">
-        <label for="formFile" class="p-4 w-100 text-secondary text-center bg-gray100 border-dash">
-          <span v-if="fileName.length <= 0"><span class="me-2 material-symbols-sharp fs-1 align-middle">cloud_upload</span>上傳檔案</span>
-          <span v-else><span class="me-2 material-symbols-sharp fs-1 align-middle">cloud_upload</span>{{ fileName }}</span>
-        </label>
-      </form>
-    </div>
-    <div class="mb-5 d-flex justify-content-end align-items-center">
-      <span class="text-primary me-5">NT$ <span class="fs-2 fw-bold">{{currProd.price}}</span></span>
-      <a href="#" class="btn btn-accent" @click.prevent="addToCart()" :class="{'disabled' : this.file.name === undefined}">
-        <span class="material-symbols-sharp align-text-bottom">shopping_cart</span>
-        加入購物車
-      </a>
     </div>
   </div>
   <div class="mt-8 py-7 bg-gray200">

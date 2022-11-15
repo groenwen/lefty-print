@@ -2,7 +2,7 @@
   <div>
     <v-loading :active="isLoading"></v-loading>
     <SweetAlert></SweetAlert>
-    <div class="mb-7 bg-gray100 py-5 py-sm-6">
+    <div class="mb-5 mb-sm-7 bg-gray100 py-5 py-sm-6">
       <div class="container">
         <HeadTitle dialog="All Products" dark-text="所有產品"></HeadTitle>
       </div>

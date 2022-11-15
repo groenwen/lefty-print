@@ -19,7 +19,7 @@ const router = createRouter({
         },
         {
           path: 'qa',
-          component: () => import('../views/QaView.vue')
+          component: () => import('../views/QAView.vue')
         },
         {
           path: 'make',

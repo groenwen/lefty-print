@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg bg-white">
+  <nav class="navbar navbar-expand-lg bg-white sticky-top" :class="{'navbar-min': isScroll}">
     <div class="container">
       <router-link to="/" class="navbar-brand"><img src="@/assets/images/logo.svg" class="navbar-logo" alt=""></router-link>
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
@@ -16,7 +16,7 @@
               <router-link to="/products" class="nav-link" :class="{'active':this.$route.path === '/products'}">所有產品</router-link>
             </li>
             <li class="nav-item">
-              <router-link to="/make" class="nav-link" :class="{'active':this.$route.path === '/make'}">名片快速製作</router-link>
+              <router-link to="/make" class="nav-link" :class="{'active':this.$route.path === '/make'}">名片線上製作</router-link>
             </li>
             <li class="nav-item">
               <router-link to="/qa" class="nav-link" :class="{'active':this.$route.path === '/qa'}">印刷小知識</router-link>
@@ -48,6 +48,60 @@
     </div>
   </nav>
 </template>
+<style lang="scss">
+.navbar {
+  transition: all 0.5s;
+}
+.navbar-logo {
+  height: 1.5rem;
+  transition: all 0.5s;
+  @include media-breakpoint-up(md) {
+    height: 1.75rem;
+  }
+}
+.navbar-toggler {
+  border-width: 0px;
+}
+.nav-link,
+.nav-link-cart {
+  width: fit-content;
+  margin-top: 1rem;
+  @include media-breakpoint-up(md) {
+    margin-left: 1rem;
+  }
+  @include media-breakpoint-up(lg) {
+    margin-top: 0rem;
+  }
+}
+.nav-link-cart {
+  $size: 2.5rem;
+  display: inline-block;
+  width: $size;
+  height: $size;
+  color: $dark;
+  line-height: $size;
+  padding: 0.5rem;
+  background-color: $gray-100;
+  border-radius: 50%;
+  &.active {
+    color: $primary;
+  }
+}
+.navbar-nav .show > .nav-link,
+.navbar-nav .nav-link.active {
+  color: $primary !important;
+}
+.navbar-min {
+  padding: 0.75rem 0 0.5rem !important;
+  box-shadow: 0 0.25rem 0.5rem rgba($dark, 0.15);
+  .navbar-logo {
+    height: 1.25rem;
+    @include media-breakpoint-up(md) {
+      height: 1.5rem;
+    }
+  }
+}
+</style>
 <script>
 import '@popperjs/core/dist/umd/popper.min.js'
 import BsTooltip from 'bootstrap/js/dist/tooltip.js'
@@ -58,6 +112,7 @@ export default {
     return {
       tooltipList: [],
       bsOffcanvas: null,
+      isScroll: false,
       carts: []
       // path: ''
     }
@@ -119,6 +174,14 @@ export default {
           el.disable()
         })
       }
+    },
+    scrollPos (scrollY) {
+      if (scrollY > 50) {
+        this.isScroll = true
+      } else {
+        this.isScroll = false
+      }
+      console.log(this.isScroll)
     }
   },
   mounted () {
@@ -136,47 +199,13 @@ export default {
     emitter.on('cartCount', () => {
       this.getCarts()
     })
+
+    // scroll
+    vm.scrollY = window.scrollY
+    window.onscroll = () => {
+      vm.scrollY = window.scrollY
+      this.scrollPos(vm.scrollY)
+    }
   }
 }
 </script>
-<style lang="scss">
-.navbar-logo {
-  height: 1.5rem;
-  @include media-breakpoint-up(md) {
-    height: 1.75rem;
-  }
-}
-.navbar-toggler {
-  border-width: 0px;
-}
-.nav-link,
-.nav-link-cart {
-  width: fit-content;
-  margin-top: 1rem;
-  @include media-breakpoint-up(md) {
-    margin-left: 1rem;
-  }
-  @include media-breakpoint-up(lg) {
-    margin-top: 0rem;
-  }
-}
-.nav-link-cart {
-  $size: 2.5rem;
-  display: inline-block;
-  width: $size;
-  height: $size;
-  color: $dark;
-  line-height: $size;
-  padding: 0.5rem;
-  background-color: $gray-100;
-  border-radius: 50%;
-  &.active {
-    color: $primary;
-  }
-}
-.navbar-nav .show > .nav-link,
-.navbar-nav .nav-link.active {
-  color: $primary !important;
-  // border-bottom: 2px solid $primary;
-}
-</style>
