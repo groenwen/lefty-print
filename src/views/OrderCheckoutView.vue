@@ -1,5 +1,7 @@
 <template>
   <div>
+    <v-loading :active="isLoading"></v-loading>
+    <SweetAlert></SweetAlert>
     <div class="container mt-5 mb-8">
       <div class="row justify-content-center">
         <div class="col-6">
@@ -73,13 +75,19 @@
   </div>
 </template>
 <script>
+import emitter from '@/js/emitter'
+import SweetAlert from '@/components/SweetAlert.vue'
 export default {
   data () {
     return {
       VUE_APP: `${import.meta.env.VITE_API}/api/${import.meta.env.VITE_PATH}`,
+      isLoading: false,
       order: {},
       user: {}
     }
+  },
+  components: {
+    SweetAlert
   },
   watch: {
     orderId () {
@@ -93,16 +101,19 @@ export default {
   },
   methods: {
     getOrder () {
+      this.isLoading = true
       const url = `${this.VUE_APP}/order/${this.orderId}`
-      console.log(this.$route.params)
       this.$http.get(url)
         .then((res) => {
+          this.isLoading = false
           this.order = res.data.order
           this.user = res.data.order.user
-          console.log(this.order)
+          // 更新購物車數量
+          emitter.emit('cartCount')
         })
         .catch((err) => {
-          console.dir(err)
+          this.isLoading = false
+          emitter.emit('sweetalert', `${err.response.data.message}, error`)
         })
     }
   },

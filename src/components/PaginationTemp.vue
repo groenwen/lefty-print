@@ -26,7 +26,6 @@ export default {
   props: ['pages'],
   methods: {
     emitPages (item) {
-      console.log('emitPages', item)
       this.$emit('emitPages', item)
     }
   }

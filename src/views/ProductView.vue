@@ -66,7 +66,7 @@
         </div>
         <p class="mb-5 text-end text-secondary">{{ currProd.width }}x{{ currProd.height }}mm ／ {{ currProd.side }} ／ {{ currProd.material }} ／ {{ currProd.p_qty }} 張</p>
         <div class="mb-5">
-          <form @submit.prevent="uploadFile">
+          <form>
             <input class="inputfile" type="file" id="formFile" @change="choseFile">
             <label for="formFile" class="p-4 w-100 text-secondary text-center bg-gray100 border-dash">
               <span v-if="fileName.length <= 0"><span class="me-2 material-symbols-sharp fs-1 align-middle">cloud_upload</span>上傳檔案</span>
@@ -248,25 +248,6 @@ export default {
     choseFile (e) {
       this.file = e.target.files[0]
       this.fileName = this.file.name
-      console.log(this.fileName)
-      console.log(this.file.name.length > 0, '{}')
-    },
-    uploadFile () {
-      const url = 'https://script.google.com/macros/s/AKfycbwuS2QeYvec72MZrQTPElC07XE1ntHm3tepY2ySf44qWRNvy_J9vADKZveVQ93dzhO8/exec'
-      // const form = new FormData()
-      // const parameter = {
-      //   fileName: this.file.name,
-      //   fileType: this.file.type
-      // }
-      // form.append('file', this.file)
-      // console.log(form.parentNode)
-      this.$http.post(url, this.file, { headers: { 'content-type': 'text/plain; charset=utf-8' } })
-        .then((res) => {
-          console.log(res)
-        })
-        .catch((err) => {
-          console.log(err)
-        })
     }
   },
   mounted () {

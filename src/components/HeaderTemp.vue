@@ -125,6 +125,7 @@ export default {
   watch: {
     path () {
       this.hideOffcanvas()
+      this.hideTooltip()
     }
   },
   methods: {
@@ -158,6 +159,9 @@ export default {
     hideOffcanvas () {
       this.bsOffcanvas.hide()
     },
+    hideTooltip () {
+      this.tooltipList.forEach(el => el.hide())
+    },
     setTooltip (windowWidth) {
       // lg 以上才 shown tooltip
       if (windowWidth >= 992) {
@@ -167,7 +171,6 @@ export default {
             trigger: 'hover'
           })
         })
-        console.log('yes')
       } else {
         // 否則 移除 tooltip
         this.tooltipList.forEach(el => {
@@ -181,7 +184,6 @@ export default {
       } else {
         this.isScroll = false
       }
-      console.log(this.isScroll)
     }
   },
   mounted () {

@@ -17,35 +17,35 @@
           <div>
             <p class="p-4 text-secondary" v-if="carts.length <= 0">購物車尚無內容</p>
             <div v-else>
-              <div v-for="item in carts" :key="item.id" class="py-4 pe-3 d-flex justify-content-between align-items-center border-bottom">
-                <div class="row g-5">
-                  <div class="col-sm-6">
-                    <div v-if="item.files[0].back === undefined">
-                      <img :src="item.files[0].front" class="border img-fluid" style="width: 400px;" alt="">
+              <div v-for="item in carts" :key="item.id" class="py-4 pe-3 border-bottom">
+                <div class="row">
+                  <div class="col-sm-5">
+                    <div v-if="item.files[0].back === undefined" class="mb-3 mb-sm-0">
+                      <img :src="item.files[0].front" class="border img-fluid" style="width: 100%;" alt="">
                     </div>
-                    <div v-else class="d-flex">
+                    <div v-else class="d-flex w-100 mb-3 mb-sm-0">
                       <img :src="item.files[0].front" class="border img-fluid me-1" style="width: 48.5%; max-width: 200px;" alt="">
                       <img :src="item.files[0].back" class="border img-fluid" style="width: 48.5%; max-width: 200px;" alt="">
                     </div>
                   </div>
-                  <div class="col-sm-auto d-flex align-items-center">
-                    <div class="me-5 ps-2 ps-sm-0">
+                  <div class="col-auto d-flex align-items-center">
+                    <div class="me-3 ps-2 ps-sm-0">
                       <span class="fw-bold mb-2">{{ item.product.title }}</span><br>
-                      <span class="text-secondary fs-7">{{ item.product.width }} x {{item.product.height }} mm <br>
+                      <span class="text-secondary fs-7">{{ item.product.width }}x{{item.product.height }} mm <br>
                         {{ item.product.side }}
                       </span>
                     </div>
                     <div class="text-secondary fs-7">
-                      <span><span class="me-3 small">材質</span>{{ item.product.material }}</span><br>
-                      <span><span class="me-3 small">數量</span>{{ item.product.p_qty }} {{ item.product.unit }}</span>
+                      <span><span class="me-2 small opacity-75">材質</span>{{ item.product.material }}</span><br>
+                      <span><span class="me-2 small opacity-75">數量</span>{{ item.product.p_qty }} {{ item.product.unit }}</span>
                     </div>
                   </div>
-                </div>
-                <div class="text-end align-self-end">
-                  <div class="text-nowrap mb-3 fw-bolder">$ {{ item.product.price }}</div>
-                  <a href="#" class="btn-link" @click.prevent="delCart(item, item.files[0].id)">
-                    <span class="material-symbols-outlined fs-5">delete</span>
-                  </a>
+                  <div class="col-auto ms-auto text-end align-self-end">
+                    <div class="text-nowrap mb-3 fw-bolder">$ {{ item.product.price }}</div>
+                    <a href="#" class="btn-link" @click.prevent="delCart(item, item.files[0].id)">
+                      <span class="material-symbols-outlined fs-5">delete</span>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -220,5 +220,4 @@ export default {
 }
 </script>
 <style lang="scss">
-
 </style>

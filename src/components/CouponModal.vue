@@ -73,7 +73,6 @@ export default {
   methods: {
     showModal () {
       this.myModal.show()
-      console.log(this.innCoupon)
     },
     hideModal () {
       this.myModal.hide()
