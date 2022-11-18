@@ -169,8 +169,8 @@ export default {
             this.$http.delete(url)
               .then((res) => {
                 this.isLoading = false
-                emitter.emit('sweetalert', `${res.data.message}, success`)
                 this.getCarts()
+                emitter.emit('sweetalert', `${res.data.message}, success`)
               })
               .catch((err) => {
                 this.isLoading = false
@@ -183,8 +183,8 @@ export default {
             this.$http.put(url, { data: { product_id: cartItem.id, qty: 1, files: cartItem.files } })
               .then((res) => {
                 this.isLoading = false
-                emitter.emit('sweetalert', `${res.data.message}, success`)
                 this.getCarts()
+                emitter.emit('sweetalert', `${res.data.message}, success`)
               })
               .catch((err) => {
                 this.isLoading = false

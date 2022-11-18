@@ -25,7 +25,8 @@
         <p class="mb-0 text-center text-white fs-7">Copyright © Print 2022 | <span class="d-md-inline d-block me-5">僅個人作品，無商業用途</span>
           <router-link to="/admin" class="btn-link">管理員登入</router-link><br>
           Image by <a href="https://www.freepik.com/free-vector/people-avatar-collection_3983800.htm#page=3&query=hand%20drawn%20face&position=19&from_view=author" target="_blank">Freepik</a> &
-          <a href="https://www.freepik.com/free-vector/people-research-analytics-dashboard-with-graphs-charts-vector-doodle-icons-statistic-analysis-work-with-database-information-report-with-diagrams-magnifying-glass_22140005.htm#page=2&query=file&position=8&from_view=search&track=sph?sign-up=google" target="_blank">upklyak</a> on Freepik
+          <a href="https://www.freepik.com/free-vector/people-research-analytics-dashboard-with-graphs-charts-vector-doodle-icons-statistic-analysis-work-with-database-information-report-with-diagrams-magnifying-glass_22140005.htm#page=2&query=file&position=8&from_view=search&track=sph?sign-up=google" target="_blank">upklyak</a> ＆
+          <a href="https://www.freepik.com/free-psd/business-card-name-card-mockup_3576441.htm#page=2&query=business%20card&position=37&from_view=search&track=sph" target="_blank">rawpixel.com</a> on Freepik
         </p>
 
       </div>

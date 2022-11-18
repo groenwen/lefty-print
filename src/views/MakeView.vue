@@ -320,7 +320,6 @@ export default {
       let url = `${this.VUE_APP}/cart`
       this.$http.get(url)
         .then((res) => {
-          this.isLoading = false
           this.carts = res.data.data.carts
 
           let http = 'post'
@@ -342,8 +341,8 @@ export default {
           // 加入購物車
           this.$http[http](url, { data: cartItem })
             .then((res) => {
-              this.isLoading = false
               // 更新購物車數量
+              this.isLoading = false
               emitter.emit('cartCount')
               emitter.emit('sweetalert', `${res.data.message}, success`)
             })

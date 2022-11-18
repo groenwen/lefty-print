@@ -208,9 +208,9 @@ export default {
     }
   },
   mounted () {
+    this.getCategory()
     // 更新購物車數量
     emitter.emit('cartCount')
-    this.getCategory()
   }
 }
 </script>
